@@ -6,7 +6,7 @@ export default function Coin() {
     return(
         <View style={styles.coinBox}>
             <Image style={styles.imageCoin} source={require('../../Assets/coin.png')}/>
-            <Text>00000</Text>
+            <Text style={styles.coinText}>00000</Text>
         </View>
     )
 }

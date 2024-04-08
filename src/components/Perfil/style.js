@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
         height: 400,
         width: 430, 
         backgroundColor: "#d1d3c1",
-        borderRadius: 5+100+150+0,
-        marginTop: -250,
-        marginLeft: -40,
+        borderRadius: 0+100+150+0,
+        marginTop: -275,
+        marginLeft: -80,
     },
     perfilBox: {
         marginTop: 20,
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     },
     imgBox: {
         display: "flex",
-        height: 80,
-        width: 80,
+        height: 48,
+        width: 48,
         color: "#fff",
         borderColor: "grey",
         borderWidth: 3,
