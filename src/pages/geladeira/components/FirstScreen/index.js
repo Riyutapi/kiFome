@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import  Perfil  from '../Perfil';
-import Coin from '../Coin';
-import Menu from '../Menu';
+import  Perfil  from '../../../../components/Perfil';
+import Coin from '../../../../components/Coin';
+import Menu from '../../../../components/Menu';
 import styles from "./style";
-import But from '../Button';
+import But from '../../../../components/Button';
 
 export default function FirstScreen() {
     return (
