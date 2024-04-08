@@ -3,8 +3,8 @@ import { StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     imageCoin: {
         display: "flex",
-        height: 50,
-        width: 50,
+        height: 38,
+        width: 38,
         alignSelf: "flex-start",
         marginTop: 10,
     },
@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
         display: "flex",
         alignItems: "center",
         gap: 5
+    },
+    coinText: {
+        fontSize: 12,
     }
 });
 
