@@ -1,6 +1,7 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { Perfil } from './pages/perfil'
 import { Escrever_Receita } from './pages/escrever_receita'
+import { Geladeira } from './pages/geladeira'
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -14,6 +15,10 @@ export function Routes(){
             <Tab.Screen
                 name="escrever"
                 component={Escrever_Receita}
+            />
+            <Tab.Screen
+                name="geladeira"
+                component={Geladeira}
             />
         </Tab.Navigator>
     )
