@@ -10,7 +10,7 @@ export default function Perfil() {
                 <View style={styles.leftTitle}>
                     <Text style={styles.nameBox}>
                         <Text>Diego Freire - </Text>
-                        <Text style={styles.Level}>Nivel 01</Text>
+                        <Text style={styles.Level}>Nível 01</Text>
                     </Text>
                         <Text style={styles.category}>Auxiliar de Cozinha</Text>
                 </View>

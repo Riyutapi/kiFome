@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, Image 
 import  Perfil  from '../../components/Perfil';
 import Coin from '../../components/Coin';
 import Menu from '../../components/Menu';
-import styles from "./style";
+import styles from "./styles";
 import But from '../../components/Button';
 
 export function Geladeira() {

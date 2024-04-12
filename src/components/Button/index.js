@@ -6,7 +6,7 @@ export default function But() {
     return(
         <View>
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.textButton}>Buscaar</Text>
+                <Text style={styles.textButton}>Buscar</Text>
             </TouchableOpacity>
         </View>
     )
