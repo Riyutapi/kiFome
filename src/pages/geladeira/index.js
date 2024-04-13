@@ -6,6 +6,7 @@ import Coin from '../../components/Coin';
 import Menu from '../../components/Menu';
 import styles from "./style";
 import But from '../../components/Button';
+import BackButton from '../../components/BackButton';
 
 export function Geladeira() {
   const [add, setAdd] = React.useState('none')
@@ -91,9 +92,7 @@ export function Geladeira() {
           </View>
 
           <View style={{display: ingredientList}}>
-          <TouchableOpacity onPress={handleClickBack} style={styles.backButton}>
-                <Image style={styles.backButtonImg} source={require('../../Assets/Back.png')}/>
-            </TouchableOpacity>
+          <BackButton top={190} left={-60} color={'#D1D3C1'} onPress={handleClickBack}/>
             <TextInput style={styles.input} value={search} onChangeText={handleSearch} placeholder='Quais ingredientes voce tem em casa?'/>
             <View style={styles.ingredientBox}>
             <ScrollView style={styles.scroll}>
