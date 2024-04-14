@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import styles from "./style";
 import BackButton from "../BackButton";
-import Perfil from "../Perfil";
+import Perfil from "../../components/Perfil";
 
 export default function Receita() {
     const [heart, setHeart] = React.useState(true)
