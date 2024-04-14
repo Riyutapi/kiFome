@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         margin: 30,
         gap: 20,
+        zIndex: 999
         
     },
     menuCircle: {

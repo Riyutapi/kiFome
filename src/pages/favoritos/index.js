@@ -1,11 +1,10 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native'
+
 import styles from "./style";
-import Perfil from "../Perfil";
-import BackButton from "../BackButton";
-import {Picker} from '@react-native-picker/picker';
-import Menu from "../Menu";
-import Coin from "../Coin";
+import Coin from "../../components/Coin";
+import PerfilComponent from "../../components/Perfil";
+import Menu from "../../components/Menu";
 
 export default function Favoritas() {
     const [search, setSearch] = React.useState('')
@@ -18,7 +17,7 @@ export default function Favoritas() {
         <View style={styles.container}>
             <View style={styles.header}>
             <Coin />
-            <Perfil color={"#f2f2ec"} left={-80}/>
+            <PerfilComponent color={"#f2f2ec"} left={80}/>
             </View>
 
             <View style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>

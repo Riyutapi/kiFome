@@ -1,25 +1,27 @@
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Perfil } from './pages/perfil'
-import { Escrever_Receita } from './pages/escrever_receita'
-import { Geladeira } from './pages/geladeira'
 
-const Tab = createMaterialBottomTabNavigator();
+import { Geladeira } from './pages/geladeira'
+import { Buscar_Receita } from './pages/buscar_receita'
+import  Favoritas  from './pages/favoritos'
+import EscreverReceita from './pages/escreverReceita';
+
+const Stack = createStackNavigator();
 
 export function Routes(){
-    return(
-        <Tab.Navigator>
-            <Tab.Screen
-                name="perfil"
-                component={Perfil}
-            />
-            <Tab.Screen
-                name="escrever"
-                component={Escrever_Receita}
-            />
-            <Tab.Screen
-                name="geladeira"
-                component={Geladeira}
-            />
-        </Tab.Navigator>
-    )
+    return (
+        <Stack.Navigator>
+          <Stack.Screen name="geladeira" component={Geladeira} 
+          options={{ headerShown: false }}/>
+          <Stack.Screen name="buscar" component={Buscar_Receita} 
+          options={{ headerShown: false }}/>
+          <Stack.Screen name="favorito" component={Favoritas} 
+          options={{ headerShown: false }}/>
+          <Stack.Screen name="escrever" component={EscreverReceita} 
+          options={{ headerShown: false }}/>
+          <Stack.Screen name="perfil" component={Perfil} 
+            options={{ headerShown: false }}/>
+        </Stack.Navigator>
+      );
 }

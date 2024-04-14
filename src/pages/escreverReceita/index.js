@@ -1,13 +1,8 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import styles from "./style";
-import Perfil from "../Perfil";
-import BackButton from "../BackButton";
-import {Picker} from '@react-native-picker/picker';
-import Menu from "../Menu";
-import Coin from "../Coin";
 
-export default function SuasReceitas() {
+export default function EscreverReceita() {
     const [search, setSearch] = React.useState('')
 
     const handleSearch = (text) => {
