@@ -1,13 +1,17 @@
 import styles from "./styles";
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import BackButton from '../../components/BackButton';
 import Item from './components/itens'
 import Versao from '../../components/versao'
+import { useNavigation } from '@react-navigation/native';
 
-export function Perfil() {
+
+export function Perfil({ route }) {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
-
+            
             <View style={styles.perfil}>
                 <View style={styles.imgBox}>
                     <Image source={require("../../Assets/imagem_usuario.png")} style={styles.imgBoxImage} resizeMode="cover" />
@@ -16,9 +20,9 @@ export function Perfil() {
                 <Text style={styles.category}>Auxiliar de Cozinha</Text>
             </View>
             
-            <View style={styles.superiorEsquerdo}>
-                <BackButton top={20} left={0} color="#F2F2EC" />
-            </View>
+            <TouchableOpacity style={styles.superiorEsquerdo}>
+                <BackButton top={20} left={0} color="#F2F2EC" onPress={() => navigation.goBack()}/>
+            </TouchableOpacity>
 
             <View style={styles.retanguloContainer}>
                 <Item espaço1={24} espaço2={4} imagem={require("./assets/dados.png")} texto="Meus dados" />

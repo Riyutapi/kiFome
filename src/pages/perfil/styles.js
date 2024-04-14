@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     imgBox: {
-        marginTop: 90,
         height: 160,
         width: 160,
         borderColor: "grey",

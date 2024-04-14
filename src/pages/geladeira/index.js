@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ingredients } from '../../../ingredients';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, Image } from 'react-native';
-import  Perfil  from '../../components/Perfil';
+import { Text, View, TouchableOpacity, TextInput, ScrollView, Image } from 'react-native';
+import  PerfilComponent  from '../../components/Perfil';
 import Coin from '../../components/Coin';
 import Menu from '../../components/Menu';
 import styles from "./styles";
@@ -77,7 +77,7 @@ export function Geladeira() {
     return (
       <View style={styles.mainBox}>
         <View style={styles.header}>
-        <Perfil/>
+        <PerfilComponent/>
         <Coin/>
         </View>
         <View style={styles.mainCircle}>

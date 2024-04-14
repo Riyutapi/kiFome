@@ -1,12 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import styles from "./style";
 
-export default function Perfil() {
+export default function PerfilComponent(){
+    const navigation = useNavigation();
+    
     return (
         <View>
             <Text style={styles.backGround}></Text>
-            <View style={styles.perfilBox}>
+            <TouchableOpacity style={styles.perfilBox} onPress={() => {
+                navigation.navigate('perfil')
+            }}>
                 <View style={styles.leftTitle}>
                     <Text style={styles.nameBox}>
                         <Text>Diego Freire - </Text>
@@ -15,7 +20,7 @@ export default function Perfil() {
                         <Text style={styles.category}>Auxiliar de Cozinha</Text>
                 </View>
                 <Text style={styles.imgBox}></Text>
-            </View>
+            </TouchableOpacity>
         </View>
     );
 }
