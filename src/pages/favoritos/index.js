@@ -17,7 +17,7 @@ export default function Favoritas() {
         <View style={styles.container}>
             <View style={styles.header}>
             <Coin />
-            <PerfilComponent color={"#f2f2ec"} left={80}/>
+            <PerfilComponent color={"#f2f2ec"} left={-80}/>
             </View>
 
             <View style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>

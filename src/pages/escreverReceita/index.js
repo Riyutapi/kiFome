@@ -1,6 +1,10 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import styles from "./style";
+import Coin from "../../components/Coin";
+import { Perfil } from "../perfil";
+import Menu from "../../components/Menu";
+import PerfilComponent from "../../components/Perfil";
 
 export default function EscreverReceita() {
     const [search, setSearch] = React.useState('')
@@ -13,7 +17,7 @@ export default function EscreverReceita() {
         <View style={styles.container}>
             <View style={styles.header}>
             <Coin />
-            <Perfil color={"#f2f2ec"} left={-80}/>
+            <PerfilComponent color={"#f2f2ec"} left={-80}/>
             </View>
 
             <View style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>

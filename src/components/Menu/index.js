@@ -3,11 +3,11 @@ import { View,  Image, TouchableOpacity } from "react-native";
 import styles from "./style";
 import { useNavigation } from '@react-navigation/native';
 
-export default function Menu() {
+export default function Menu({top}) {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.menuBox}>
+        <View style={[styles.menuBox, {marginTop: top}]}>
             <TouchableOpacity style={styles.menuCircle} onPress={() => {
                 navigation.navigate('geladeira')
             }}>
