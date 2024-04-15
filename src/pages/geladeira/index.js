@@ -3,7 +3,6 @@ import { ingredients } from '../../../ingredients';
 import { Text, View, TouchableOpacity, TextInput, ScrollView, Image } from 'react-native';
 import  PerfilComponent  from '../../components/Perfil';
 import Coin from '../../components/Coin';
-import Menu from '../../components/Menu';
 import styles from "./styles";
 import But from '../../components/Button';
 
@@ -153,7 +152,6 @@ export function Geladeira() {
       
         <View style={styles.footer}>  
             <But/>
-            <Menu/>
         </View>
       </View>
     );
