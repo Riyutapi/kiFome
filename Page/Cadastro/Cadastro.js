@@ -1,39 +1,37 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React from "react";
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
 
-const Login = () => {
+const Cadastro = () => {
     return (
         <View style={styles.container}>
             <View style = {styles.circulo4}></View>
             <View style = {styles.circulo3}></View>
+
             <View style={styles.logo}>
                 <Image style={styles.image} source={require("../assets/logo.png")} />
             </View>
 
-
             <View style={styles.form}>
                 <View style={styles.boxes}>
-                        <TextInput style={styles.input} placeholder="Login" require />
+                    <TextInput style={styles.input} placeholder="Login" />
                 </View>
 
                 <View style={styles.boxes}>
-                        <TextInput style={styles.input} placeholder="Senha" secureTextEntry={true} require />
+                    <TextInput style={styles.input} placeholder="E-mail" />
                 </View>
 
-                <TouchableOpacity style={styles.recuperarSenha}>
-                    <Text style={styles.recuperarSenhaText}>Esqueceu a senha?</Text>
-                </TouchableOpacity>
+                <View style={styles.boxes}>
+                    <TextInput style={styles.input} placeholder="Senha" secureTextEntry={true} />
+                </View>
+
+                <View style={styles.boxes}>
+                    <TextInput style={styles.input} placeholder="Confirmar Senha" secureTextEntry={true} />
+                </View>
 
                 <TouchableOpacity style={styles.botao}>
-                    <Text style={styles.botaoText}>ENTRAR</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.novaConta}>
-                    <Text style={styles.novaContaText}>Criar conta</Text>
+                    <Text style={styles.botaoText}>Criar</Text>
                 </TouchableOpacity>
             </View>
-
-            <View style = {styles.circulo}></View>
         </View>
     );
 };
@@ -47,23 +45,8 @@ const styles = StyleSheet.create({
     },
 
     logo: {
-        padding: 140,
-        paddingTop: 50,
-    },
-
-    image: {
-        width: 161,
-        height: 163,
-    },
-
-    circulo4: {
-        position: 'absolute',
-        width: 730,
-        height: 730,
-        borderRadius: 365,
-        top: 275,
-        left: -83,
-        backgroundColor: '#ffffff',
+        padding: 120,
+        paddingTop: 70,
     },
 
     circulo3: {
@@ -72,8 +55,23 @@ const styles = StyleSheet.create({
         height: 730,
         borderRadius: 365,
         top: 280,
-        left: -80,
+        right: -80,
         backgroundColor: '#DF6127',
+    },
+
+    circulo4: {
+        position: 'absolute',
+        width: 730,
+        height: 730,
+        borderRadius: 365,
+        top: 275,
+        right: -83,
+        backgroundColor: '#ffffff',
+    },
+
+    image: {
+        width: 161,
+        height: 163,
     },
 
     form: {
@@ -93,10 +91,11 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'rgba(2, 2, 2, 0.849)',
         paddingHorizontal: 10,
+        paddingTop: -2,
     },
 
     icon: {
-        // Estilos do ícone
+        // Estilo para o ícone, se necessário
     },
 
     input: {
@@ -110,14 +109,6 @@ const styles = StyleSheet.create({
         color: '#030303',
     },
 
-
-    recuperarSenhaText: {
-        fontSize: 14.5,
-        fontWeight: '600',
-        color: '#ffffff',
-        paddingBottom: 50,
-    },
-
     botao: {
         width: '60%',
         height: 50,
@@ -125,6 +116,7 @@ const styles = StyleSheet.create({
         borderRadius: 40,
         justifyContent: 'center',
         alignItems: 'center',
+        marginVertical: 32,
         shadowColor: '#571c00e5',
         shadowOffset: {
             width: 0,
@@ -139,16 +131,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
         color: 'rgba(255, 255, 255, 0.849)',
-    },
-
-    novaContaText: {
-        fontSize: 14.5,
-        fontWeight: '600',
-        color: '#ffffff',
-        paddingTop:10,
-        paddingBottom: 70,
-    },
-
+    }
 });
 
-export default Login;
+export default Cadastro;
