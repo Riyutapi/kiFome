@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#df6127",
         borderRadius: 50,
         textAlign: "center",
+        zIndex: 1000,
     },
     textButton: {
         color:"#fff",

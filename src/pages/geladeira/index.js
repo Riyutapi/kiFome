@@ -77,7 +77,7 @@ export function Geladeira() {
     return (
       <View style={styles.mainBox}>
         <View style={styles.header}>
-        <PerfilComponent/>
+        <PerfilComponent color={'#d1d3c1'} left={-80}/>
         <Coin/>
         </View>
         <View style={styles.mainCircle}>
@@ -150,7 +150,7 @@ export function Geladeira() {
         </View>
       
         <View style={styles.footer}>  
-            <But/>
+          <But/>
         </View>
       </View>
     );

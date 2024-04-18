@@ -21,7 +21,11 @@ const styles = StyleSheet.create({
     footer: {
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        zIndex: 100,
+        height: 200,
+        width: 200,
+        paddingTop: 15,
     },
     mainCircle: {
         position: "absolute",

@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between",
-        margin: 15
+        margin: 15,
+        marginHorizontal: 20,
     },
     input: {
         width: 331,
@@ -80,7 +81,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     addButton2: {
-        position: 'absolute',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
         width: 54,
         backgroundColor: "#DF6127",
         borderRadius: 50,
-        marginTop: 420,
         marginLeft: 165,
         zIndex: 20,
     },
