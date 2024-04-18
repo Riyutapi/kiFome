@@ -72,13 +72,15 @@ export function Favoritos() {
                 <Text style={{fontSize: 11, color: '#3E4411', fontWeight: '400'}}>Selecione a receita desejada:</Text>
             </View>
 
-            <View style={[styles.imgHeartBox]}>
-                        <Image style={[styles.imgHeart, {height: 18, width: 18}]} source={require(`../../Assets/orangeHeart.png`)}/>   
-            </View>
+
             <View style={styles.receitaLista}>
                 <View style={styles.receitaUnid}>
+
                     <Image source={require('../../Assets/omelete.png')}/>
                     <View style={{display: 'flex', flexDirection: 'column', gap: 10}}>
+                    <View style={[styles.imgHeartBox]}>
+                        <Image style={[styles.imgHeart, {height: 18, width: 18}]} source={require(`../../Assets/orangeHeart.png`)}/>   
+                    </View>
                         <View style={styles.receitaUnidRight}>
                             <View style={styles.orangeCircle}>
                                 <Image source={require('../../Assets/littleHeart.png')}/>

@@ -9,11 +9,14 @@ const styles = StyleSheet.create({
         height: 100 + '%',
     },
     header: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
+        margin: 15,
+        marginHorizontal: 20,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
         justifyContent: "space-between",
-        margin: 15
+        gap: 80,
+        zIndex: 100,
     },
     input: {
         width: 331,
@@ -39,8 +42,8 @@ const styles = StyleSheet.create({
     },
     imgHeartBox:{
         position: 'absolute',
-        marginTop: 15,
-        marginLeft: 75,
+        marginTop: -65,
+        marginLeft: -240,
         height: 32,
         width: 32,
         borderRadius: 50,
