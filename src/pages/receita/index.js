@@ -2,8 +2,10 @@ import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import styles from "./style";
 import BackButton from "../../components/BackButton";
+import { useNavigation } from '@react-navigation/native';
 
-export default function Receita() {
+export function Receita() {
+    const navigation = useNavigation();
     const [heart, setHeart] = React.useState(true)
 
     const handleFav = () => {
@@ -16,7 +18,11 @@ export default function Receita() {
                 {/* Cabeçalho */}
                 <View style={styles.Header}>
                     <View style={styles.headerTop}>
-                        <BackButton color={'#F2F2EC'}/>
+                        
+                    <TouchableOpacity style={styles.superiorEsquerdo}>
+                        <BackButton color="#F2F2EC" onPress={() => navigation.goBack()}/>
+                    </TouchableOpacity>
+
                         <TouchableOpacity onPress={handleFav} style={styles.imgHeartBox}>
                         {heart ? (
                             <Image style={[styles.imgHeart, {height: 26, width: 26}]} source={require(`../../Assets/blackHeart.png`)}/>

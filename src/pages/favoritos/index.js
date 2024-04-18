@@ -3,8 +3,10 @@ import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native'
 import styles from "./style";
 import Coin from "../../components/Coin";
 import PerfilComponent from "../../components/Perfil";
+import { useNavigation } from '@react-navigation/native';
 
 export function Favoritos() {
+    const navigation = useNavigation();
     const [search, setSearch] = React.useState('')
 
     const handleSearch = (text) => {
@@ -74,7 +76,8 @@ export function Favoritos() {
 
 
             <View style={styles.receitaLista}>
-                <View style={styles.receitaUnid}>
+                <TouchableOpacity style={styles.receitaUnid} onPress={() => {
+                    navigation.navigate('receita')}}>
 
                     <Image source={require('../../Assets/omelete.png')}/>
                     <View style={{display: 'flex', flexDirection: 'column', gap: 10}}>
@@ -96,7 +99,9 @@ export function Favoritos() {
                             <Text style={{fontSize: 15, fontWeight: '700', color: '#3E4411'}}>52</Text>
                         </View>
                     </View>
-                </View>
+
+                </TouchableOpacity>
+
                 <Text style={{color: '#DF6127', fontSize: 12, fontWeight: '600'}}>OMELETE TRADICIONAL</Text>
                 <View style={styles.avaliacaoBox}>
                     <View style={styles.avaliacaoUnit}>
