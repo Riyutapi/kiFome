@@ -5,10 +5,11 @@ import  PerfilComponent  from '../../components/Perfil';
 import Coin from '../../components/Coin';
 import styles from "./styles";
 import But from '../../components/Button';
+import BackButton from '../../components/BackButton';
 
 export function Geladeira() {
-  const [add, setAdd] = React.useState('none')
-  const [ingredientList, setIngredientList] = React.useState('flex')
+  const [add, setAdd] = React.useState('flex')
+  const [ingredientList, setIngredientList] = React.useState('none')
   const [ingredient, setIngrediet] = React.useState('none')
   const [search, setSearch] = React.useState('')
   const [objFreezer, setObjFreezer] = React.useState([]);
@@ -90,9 +91,7 @@ export function Geladeira() {
           </View>
 
           <View style={{display: ingredientList}}>
-          <TouchableOpacity onPress={handleClickBack} style={styles.backButton}>
-                <Image style={styles.backButtonImg} source={require('../../Assets/Back.png')}/>
-            </TouchableOpacity>
+          <BackButton top={190} left={-60} color={'#D1D3C1'} onPress={handleClickBack}/>
             <TextInput style={styles.input} value={search} onChangeText={handleSearch} placeholder='Quais ingredientes voce tem em casa?'/>
             <View style={styles.ingredientBox}>
             <ScrollView style={styles.scroll}>

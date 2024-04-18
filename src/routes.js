@@ -1,17 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image, View } from 'react-native';
-import { Perfil } from './pages/perfil'
-import { Escrever_Receita } from './pages/escrever_receita'
-import { Geladeira } from './pages/geladeira'
-import { Buscar_Receita } from './pages/buscar_receita'
-import { Favoritos } from './pages/favoritos'
+import { Perfil } from './pages/perfil';
+import { Escrever_Receita } from './pages/escrever_receita';
+import { Geladeira } from './pages/geladeira';
+import { Buscar_Receita } from './pages/buscar_receita';
+import { Favoritos } from './pages/favoritos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 
 function Menu() {
   return (

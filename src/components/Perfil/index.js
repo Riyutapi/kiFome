@@ -3,12 +3,12 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import styles from "./style";
 
-export default function PerfilComponent(){
+export default function PerfilComponent({color, left}){
     const navigation = useNavigation();
     
     return (
         <View>
-            <Text style={styles.backGround}></Text>
+            <Text style={[styles.backGround, {backgroundColor: color, marginLeft: left}]}></Text>
             <TouchableOpacity style={styles.perfilBox} onPress={() => {
                 navigation.navigate('perfil')
             }}>

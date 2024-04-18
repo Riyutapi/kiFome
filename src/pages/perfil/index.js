@@ -6,7 +6,7 @@ import Versao from '../../components/versao'
 import { useNavigation } from '@react-navigation/native';
 
 
-export function Perfil({ route }) {
+export function Perfil() {
     const navigation = useNavigation();
 
     return (
