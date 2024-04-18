@@ -8,6 +8,7 @@ import { Buscar_Receita } from './pages/buscar_receita';
 import { Favoritos } from './pages/favoritos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Login } from './pages/login';
+import { Cadastro } from './pages/criar_conta';
 
 
 const Stack = createStackNavigator();
@@ -135,6 +136,8 @@ export function Routes(){
     return (
         <Stack.Navigator>
           <Stack.Screen name="login" component={Login} 
+            options={{ headerShown: false }}/>
+            <Stack.Screen name="cadastro" component={Cadastro} 
             options={{ headerShown: false }}/>
           <Stack.Screen name="menu" component={Menu} 
             options={{ headerShown: false }}/>

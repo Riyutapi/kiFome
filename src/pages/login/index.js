@@ -34,7 +34,8 @@ export function Login () {
                     <Text style={styles.botaoText}>ENTRAR</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.novaConta}>
+                <TouchableOpacity style={styles.novaConta} onPress={() => {
+                    navigation.navigate('cadastro')}}>
                     <Text style={styles.novaContaText}>Criar conta</Text>
                 </TouchableOpacity>
             </View>
