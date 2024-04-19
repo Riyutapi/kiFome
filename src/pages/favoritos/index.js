@@ -20,7 +20,7 @@ export function Favoritos() {
                 <PerfilComponent color={"#f2f2ec"} left={-80}/>
             </View>
 
-            <View style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>
+            <View style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, marginTop: 15,}}>
                 <Text style={{fontSize: 12, fontWeight: '700', color: '#3E4411'}}>SUAS RECEITAS FAVORITAS</Text>
                 <TextInput style={styles.input} value={search} onChangeText={handleSearch} placeholder='Buscar'/>
             </View>

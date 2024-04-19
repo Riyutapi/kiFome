@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         height: 100 + '%',
     },
     header: {
-        margin: 15,
+        top: 5,
         marginHorizontal: 20,
         display: "flex",
         flexDirection: "row",
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 20,
         gap: 5,
     },
     receitaUnid: {
@@ -87,7 +86,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 30,
         gap: 10,
         width: 100 + '%',
     },

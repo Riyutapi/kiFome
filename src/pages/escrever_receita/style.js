@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container:{
         display: 'flex',
         flexDirection: 'column',
-        gap: 20,
+        gap: 10,
         backgroundColor: '#d1d3c1',
         height: 100 + '%',
     },
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between",
-        margin: 15,
+        top: 5,
         marginHorizontal: 20,
     },
     input: {
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         paddingLeft: 15,
+        marginTop: 30,
     },
     receitaUnid: {
         display: 'flex',
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 30,
+        marginTop: 15,
         gap: 10,
         width: 100 + '%',
     },
@@ -90,6 +91,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginLeft: 165,
         zIndex: 20,
+        bottom: 100,
+        position: 'absolute',
     },
     addTextButton: {
         fontSize: 31,
