@@ -2,12 +2,12 @@ import { StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     header: {
-        margin: 15,
+        top: 5,
         display: "flex",
         flexDirection: "row-reverse",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: 80,
+        gap: 82,
         zIndex: 100,
     },
     mainBox: {
