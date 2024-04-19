@@ -21,7 +21,7 @@ export function Perfil() {
             </View>
             
             <TouchableOpacity style={styles.superiorEsquerdo}>
-                <BackButton top={30} left={15} color="#F2F2EC" onPress={() => navigation.goBack()}/>
+                <BackButton top={30} left={15} onPress={() => navigation.goBack()}/>
             </TouchableOpacity>
 
             <View style={styles.retanguloContainer}>

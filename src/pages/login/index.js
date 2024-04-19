@@ -3,6 +3,8 @@ import styles from "./styles";
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Versao from '../../components/versao'
+import But from '../../components/Button';
+
 
 export function Login () {
     const navigation = useNavigation();
@@ -24,15 +26,12 @@ export function Login () {
                         <TextInput style={styles.input} placeholder="Senha" secureTextEntry={true} require />
                 </View>
 
-                <TouchableOpacity style={styles.recuperarSenha}>
+                <TouchableOpacity style={styles.recuperarSenha}onPress={() => {
+                    navigation.navigate('esqueceu')}}>
                     <Text style={styles.recuperarSenhaText}>Esqueceu a senha?</Text>
                 </TouchableOpacity>
 
-
-                <TouchableOpacity style={styles.botao} onPress={() => {
-                    navigation.navigate('menu')}}>
-                    <Text style={styles.botaoText}>ENTRAR</Text>
-                </TouchableOpacity>
+                <But texto={'ENTRAR'} onPress={() => navigation.navigate('menu')}/>
 
                 <TouchableOpacity style={styles.novaConta} onPress={() => {
                     navigation.navigate('cadastro')}}>

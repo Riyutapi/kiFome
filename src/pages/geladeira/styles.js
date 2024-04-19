@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        zIndex: 100,
+        zIndex: 1,
         height: 200,
         width: 200,
         paddingTop: 15,
@@ -30,14 +30,12 @@ const styles = StyleSheet.create({
     mainCircle: {
         position: "absolute",
         backgroundColor: "#fff",
-        display: "flex",
         alignItems: 'center',
         justifyContent: "center",
         borderRadius: 400,
         height: 700,
         width: 700,
         marginTop: -80,
-        zIndex: 1,
     },
     addButton: {
         display: 'flex',
@@ -88,6 +86,7 @@ const styles = StyleSheet.create({
         marginTop: 150,
         marginLeft: 160,
         padding: 10,
+        paddingTop: 16,
         fontSize: 12,
         textAlign: 'center',
         lineHeight: 15,
@@ -95,7 +94,6 @@ const styles = StyleSheet.create({
     },
 
     //Styles Adicionar Ingrediente
-
     input: {
         backgroundColor: '#F2F2EC',
         color: '#D1D3C1',
@@ -107,7 +105,7 @@ const styles = StyleSheet.create({
         width: 250,
         height: 35,
         marginTop: 200,
-        zIndex: 2
+        zIndex: 5,
     },
     ingredientBox: {
         width: 250,
@@ -121,6 +119,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         paddingTop: 10,
+        zIndex: 4,
     },
     ingredient: {
         display: 'flex',
@@ -171,7 +170,7 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
 
-    //Seus Ingreidentes
+    //Seus Ingredientes
 
     clearTextButton: {
         color: '#AFB297',
@@ -249,26 +248,6 @@ const styles = StyleSheet.create({
     ingredientQuantText: {
         fontWeight: 'bold',
         fontSize: 12,
-    },
-    addButton2: {
-        position: 'absolute',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 54,
-        width: 54,
-        backgroundColor: "#AFB297",
-        borderRadius: 50,
-        marginTop: 430,
-        marginLeft: 110,
-        zIndex: 20,
-    },
-    addTextButton2: {
-        fontSize: 31,
-        color: '#fff',
-        textShadowColor: 'rgba(0, 0, 0, 0.5)',
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 5,
     },
 });
 

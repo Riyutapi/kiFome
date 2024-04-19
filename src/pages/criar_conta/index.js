@@ -3,6 +3,7 @@ import styles from "./styles";
 import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../../components/BackButton';
+import But from '../../components/Button';
 
 
 export function Cadastro () {
@@ -14,7 +15,7 @@ export function Cadastro () {
             <View style = {styles.circulo3}></View>
 
             <TouchableOpacity style={styles.superiorEsquerdo}>
-                <BackButton top={80} left={-180} color="#F2F2EC" onPress={() => navigation.goBack()}/>
+                <BackButton top={80} left={-180} onPress={() => navigation.goBack()}/>
             </TouchableOpacity>
 
             <View style={styles.logo}>
@@ -38,10 +39,8 @@ export function Cadastro () {
                     <TextInput style={styles.input} placeholder="Confirmar Senha" secureTextEntry={true} />
                 </View>
 
-                <TouchableOpacity style={styles.botao} onPress={() => {
-                    navigation.navigate('login')}}>
-                    <Text style={styles.botaoText}>Criar</Text>
-                </TouchableOpacity>
+                <But texto={'CRIAR'} onPress={() => navigation.navigate('login')}/>
+
             </View>
         </View>
     );

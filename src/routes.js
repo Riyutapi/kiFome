@@ -11,6 +11,7 @@ import { Login } from './pages/login';
 import { Cadastro } from './pages/criar_conta';
 import { Receita } from './pages/receita';
 import { Receitas } from './pages/receitas_pesquisadas';
+import { Esqueceu } from './pages/esqueceu_senha';
 
 
 const Stack = createStackNavigator();
@@ -43,6 +44,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Freezer.png')}
@@ -68,6 +70,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Book.png')}
@@ -94,6 +97,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Heart.png')}
@@ -120,6 +124,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Pen.png')}
@@ -142,6 +147,8 @@ export function Routes(){
           <Stack.Screen name="login" component={Login} 
             options={{ headerShown: false }}/>
             <Stack.Screen name="cadastro" component={Cadastro} 
+            options={{ headerShown: false }}/>
+            <Stack.Screen name="esqueceu" component={Esqueceu} 
             options={{ headerShown: false }}/>
           <Stack.Screen name="menu" component={Menu} 
             options={{ headerShown: false }}/>

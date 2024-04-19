@@ -18,7 +18,7 @@ export function Receitas() {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity>
-                   <BackButton top={-15} left={10} color="#F2F2EC" onPress={() => navigation.goBack()}/>
+                   <BackButton top={-15} left={10} onPress={() => navigation.goBack()}/>
                 </TouchableOpacity>
 
                 <PerfilComponent color={"#f2f2ec"} left={-80}/>

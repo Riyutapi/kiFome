@@ -1,25 +1,26 @@
 import { StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
-    button: {
+    addButton2: {
+        display: 'flex',
         alignItems: 'center',
-        height: 50,
-        width: 180,
-        backgroundColor: 'rgb(222, 96, 38)',
-        borderRadius: 40,
         justifyContent: 'center',
-        elevation: 5,
-        zIndex: 1,
+        height: 54,
+        width: 54,
+        borderRadius: 50,
+        marginLeft: 165,
+        zIndex: 20,
+        bottom: 100,
+        position: 'absolute',
+        elevation: 2,
     },
-    
-    textButton: {
-        color:"#fff",
-        fontWeight: '800',
-        fontSize: 16,
+    addTextButton: {
+        fontSize: 31,
+        color: '#fff',
         textShadowColor: 'rgba(0, 0, 0, 0.5)',
         textShadowOffset: { width: 2, height: 3 },
         textShadowRadius: 5,
     }
-})
+});
 
 export default styles;
