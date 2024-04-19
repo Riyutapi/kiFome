@@ -20,12 +20,14 @@ function Menu() {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
         tabBarStyle:{ 
           position:'absolute',
-          backgroundColor: '#D1D3C1',
+          backgroundColor: 'transparent',
+          borderColor:'transparent',
           elevation: 0,
-          height:'10%',
+          height: 84,
         }}}>
       <Tab.Screen name="geladeira" 
         component={Geladeira} 
