@@ -7,6 +7,7 @@ import styles from "./styles";
 import But from '../../components/Button';
 import BackButton from '../../components/BackButton';
 
+
 export function Geladeira() {
   const [add, setAdd] = React.useState('flex')
   const [ingredientList, setIngredientList] = React.useState('none')
@@ -112,7 +113,7 @@ export function Geladeira() {
 
       <View style={{display: ingredient}}>
         <TouchableOpacity style={{zIndex: 100}}>
-                <Text onPress={() => clearFreezer()} style={styles.clearTextButton}>Esvaziar Geladeira</Text>
+          <Text onPress={() => clearFreezer()} style={styles.clearTextButton}>Esvaziar Geladeira</Text>
         </TouchableOpacity>
 
         <View style={styles.ingredientsBox}>

@@ -20,7 +20,7 @@ export function Receita() {
                     <View style={styles.headerTop}>
                         
                     <TouchableOpacity style={styles.superiorEsquerdo}>
-                        <BackButton color="#F2F2EC" onPress={() => navigation.goBack()}/>
+                        <BackButton left={-11} color="#F2F2EC" onPress={() => navigation.goBack()}/>
                     </TouchableOpacity>
 
                         <TouchableOpacity onPress={handleFav} style={styles.imgHeartBox}>
