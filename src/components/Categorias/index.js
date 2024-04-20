@@ -1,19 +1,35 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import styles from "./style";
-import Itens from "./component";
 
 export default function Categorias() {
-    return(
-    
-    <View style={styles.catBox}>
-        <Itens opaco={true} imagem={require("../../Assets/Doce.png")} texto="Doce"/>
-        <Itens imagem={require("../../Assets/catBolo.png")} texto="Brunch"/>
-        <Itens imagem={require("../../Assets/Almoco.png")} texto="Almoço"/>
-        <Itens imagem={require("../../Assets/Manha.png")} texto="Manha"/>
-        <Itens imagem={require("../../Assets/Jantar.png")} texto="Jantar"/>
-        <Itens opaco={true} imagem={require("../../Assets/Fruta.png")} texto="Fruta"/>
-    </View>
+    const Categor = [
+        {Nome: 'Doce', Img:  require('../../Assets/Doce.png'), Wid: 45, Hei: 45},
+        {Nome: 'Brunch', Img:  require('../../Assets/catBolo.png'), Wid: 45, Hei: 45},
+        {Nome: 'Almoço', Img:  require('../../Assets/Almoco.png'), Wid: 45, Hei: 45},
+        {Nome: 'Manhã', Img:  require('../../Assets/Manha.png'), Wid: 45, Hei: 45},
+        {Nome: 'Jantar', Img:  require('../../Assets/Jantar.png'), Wid: 45, Hei: 45},
+        {Nome: 'Fruta', Img: require('../../Assets/Fruta.png'), Wid: 45, Hei: 45},
+        {Nome: 'Doce', Img:  require('../../Assets/Doce.png'), Wid: 45, Hei: 45},
+        {Nome: 'Brunch', Img:  require('../../Assets/catBolo.png'), Wid: 45, Hei: 45},
+        {Nome: 'Almoço', Img:  require('../../Assets/Almoco.png'), Wid: 45, Hei: 45},
+        {Nome: 'Manhã', Img:  require('../../Assets/Manha.png'), Wid: 45, Hei: 45},
+        {Nome: 'Jantar', Img:  require('../../Assets/Jantar.png'), Wid: 45, Hei: 45},
+        {Nome: 'Fruta', Img: require('../../Assets/Fruta.png'), Wid: 45, Hei: 45},
+    ]
 
+    return(
+        <View style={styles.catBox}>
+            <ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}>
+                {Categor.map((item, index) => (
+                    <TouchableOpacity key={index} style={[styles.catContainer, {marginRight: 10}]}>
+                        <View style={[styles.categoria, {width: item.Wid, height: item.Hei}]}>
+                            <Image source={item.Img}/>
+                        </View>
+                        <Text style={{fontSize: 7, color: '#3E4411', fontWeight: '700'}}>{item.Nome}</Text>
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
+        </View>
     )
 }

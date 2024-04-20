@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         gap: 5,
         alignItems: 'center',
     }
-
+    
 });
 
 export default styles;

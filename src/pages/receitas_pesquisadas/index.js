@@ -1,11 +1,14 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Dimensions } from "react-native";
 import styles from "./style";
 import PerfilComponent from "../../components/Perfil";
 import BackButton from "../../components/BackButton";
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
 import Categorias from "../../components/Categorias";
+
+const { width } = Dimensions.get('window');
+const itemWidth = width * 0.9; // Adjust the width of items according to screen width
 
 export function Receitas() {
     const navigation = useNavigation();
@@ -40,7 +43,7 @@ export function Receitas() {
                 <Text style={{fontSize: 11, color: '#3E4411', fontWeight: '400'}}>Selecione a receita desejada:</Text>
             </View>
 
-            <View style={styles.receitaLista}>
+            <View style={[styles.receitaLista, { width: itemWidth }]}>
                 <View style={styles.receitaUnid}>
                     <Image source={require('../../Assets/omelete.png')}/>
                     <View style={{display: 'flex', flexDirection: 'column', gap: 10}}>
@@ -81,7 +84,7 @@ export function Receitas() {
                 </View>
             </View>
 
-            <View style={[styles.receitaLista, {opacity: .6}]}>
+            <View style={[styles.receitaLista, { width: itemWidth, opacity: .6 }]}>
                 <View style={[styles.receitaUnid, {marginLeft: -10}]}>
                     <Image source={require('../../Assets/omelete2.png')}/>
                 </View>
