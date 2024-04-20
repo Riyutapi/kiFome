@@ -58,10 +58,6 @@ const styles = StyleSheet.create({
         paddingTop: -2,
     },
 
-    icon: {
-        // Estilo para o ícone
-    },
-
     input: {
         flex: 1,
         height: 51,
@@ -72,30 +68,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         color: '#030303',
     },
-
-    botao: {
-        width: '60%',
-        height: 50,
-        backgroundColor: 'rgb(222, 96, 38)',
-        borderRadius: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginVertical: 32,
-        shadowColor: '#571c00e5',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-
-    botaoText: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: 'rgba(255, 255, 255, 0.849)',
-    }
 });
 
 export default styles;

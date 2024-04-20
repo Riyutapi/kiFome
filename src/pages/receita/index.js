@@ -48,10 +48,9 @@ export function Receita() {
                 {/* Cabeçalho */}
                 <View style={styles.Header}>
                     <View style={styles.headerTop}>
-                        
-                    <TouchableOpacity style={styles.superiorEsquerdo}>
-                        <BackButton left={-11} onPress={() => navigation.goBack()}/>
-                    </TouchableOpacity>
+                        <TouchableOpacity style={styles.superiorEsquerdo}>
+                            <BackButton left={-11} onPress={() => navigation.goBack()}/>
+                        </TouchableOpacity>
 
                         <TouchableOpacity onPress={handleFav} style={styles.imgHeartBox}>
                         {heart ? (
@@ -180,7 +179,6 @@ export function Receita() {
                             </View>
                         </View>
                     </View>
-
                 </View>
             </ScrollView>
         </View>

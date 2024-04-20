@@ -29,23 +29,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
     },
-    categoria:{
-        height: 45,
-        width: 45,
-        borderWidth: 1,
-        borderRadius: 10,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 8,
-    },
-    catBox: {
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     catTitle: {
         display: 'flex',
         flexDirection: 'column',
