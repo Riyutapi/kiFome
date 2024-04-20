@@ -8,8 +8,14 @@ const styles = StyleSheet.create({
         gap: 15,
         alignItems: 'center',
         justifyContent: 'center',
+        maxWidth: 320,
     },
-    
+    catContainer: {
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        gap: 5,
+    },
     categoria:{
         height: 45,
         width: 45,
@@ -20,6 +26,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 8,
     },
+    scroll: {
+        
+    }
 })
 
 export default styles;

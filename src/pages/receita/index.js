@@ -13,6 +13,18 @@ export function Receita() {
     const [dislike, setDislike] = React.useState(2)
     const [DislikeTrue, setDislikeTrue] = React.useState(false)
     const [DislikeTrueBold, setDislikeTrueBold] = React.useState('400')
+    const [opac, setOpac] = React.useState(0.4)
+    const [opacities, setOpacities] = React.useState({});
+
+    const handleChapeu = (index) => {
+        setOpacities(prevOpacities => {
+            const newOpacities = {};
+            for (let i = 0; i <= index; i++) {
+                newOpacities[i] = prevOpacities[i] === 1 ? 0.4 : 1;
+            }
+            return { ...prevOpacities, ...newOpacities };
+        });
+    };
 
     const handleFav = () => {
         setHeart(!heart)
@@ -23,6 +35,12 @@ export function Receita() {
             setLikeTrueBold('700')
             setLike(like + 1)
             setLikeTrue(true)
+
+            if(DislikeTrue == true) {
+                setDislikeTrue(false)
+                setDislike(dislike - 1)
+                setDislikeTrueBold('400')
+            }   
         }else {
             setLikeTrueBold('400')
             setLike(like - 1)
@@ -35,12 +53,26 @@ export function Receita() {
             setDislikeTrueBold('700')
             setDislike(dislike + 1)
             setDislikeTrue(true)
+
+            if(likeTrue == true) {
+                setLikeTrue(false)
+                setLike(like - 1)
+                setLikeTrueBold('400')
+            }   
         }else {
             setDislikeTrueBold('400')
             setDislike(dislike - 1)
             setDislikeTrue(false)
         }
     }
+
+    const Chapeus = [
+        {img: require('../../Assets/AvaliacaoChapeu.png')},
+        {img: require('../../Assets/AvaliacaoChapeu.png')},
+        {img: require('../../Assets/AvaliacaoChapeu.png')},
+        {img: require('../../Assets/AvaliacaoChapeu.png')},
+        {img: require('../../Assets/AvaliacaoChapeu.png')},
+    ]
 
     return(
         <View style={styles.modal}>
@@ -140,7 +172,12 @@ export function Receita() {
                         </View>
                         <View style={styles.avaliacaoBox}>
                             <Text style={styles.avaliText}>Já fez essa receita? Não esqueça de avaliá-la.</Text>
-                            <Image source={require('../../Assets/Avaliação.png')}/>
+                            <View style={styles.avaliacaoChapeu}>
+                                {Chapeus.map((item, index) => (
+                                    <TouchableOpacity onPress={() => handleChapeu(index)} key={index} style={{ opacity: opacities[index] || 1 }}><Image source={item.img}/></TouchableOpacity>
+                                ))}
+                            </View>
+
                         </View>
                     </View>
                     <Text style={styles.comentario}>Você ainda não atingiu o nível para poder comentar.</Text>
