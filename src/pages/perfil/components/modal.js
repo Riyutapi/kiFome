@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking } from 'react-native';
 
 export default function ModalPerfil({ visible, opcao, closeModal }) {
     const sobre = () => (
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
             <Text style={{textAlign: 'justify'}}> O KiFome é o resultado de um projeto inovador desenvolvido por um grupo de estudantes universitários comprometidos com a criação de soluções práticas e sustentáveis para o dia a dia.</Text>
-            <Text style={{paddingTop: 5, textAlign: 'justify'}}> Idealizado por Diego Oliveira Rebouças, Felipe Castelo Hernandes, Isabella Nepomucena dos Santos, Lincon da Silva Ferreira, Ricardo Yudi Takahashi Pimentel, Rita de Cássia dos Santos Lopes e Vitor Hugo Navarro Libano, com menção honrosa para Gustavo Junior dos Santos, este aplicativo culinário surge como uma resposta às necessidades contemporâneas de uma alimentação mais consciente e acessível.</Text>
-            <Text style={{paddingTop: 5, textAlign: 'justify'}}> Partindo da premissa de que a tecnologia pode ser uma aliada na busca por um estilo de vida mais sustentável, o KiFome foi concebido para facilitar a preparação de refeições utilizando apenas os ingredientes disponíveis nas casas dos usuários. Esta abordagem não apenas reduz o desperdício de alimentos, mas também torna a culinária mais inclusiva e econômica.</Text>
-            <Text style={{paddingTop: 5, textAlign: 'justify'}}> A iniciativa dos autores do KiFome vai além de oferecer uma simples coleção de receitas. O aplicativo visa criar uma comunidade engajada em compartilhar experiências, avaliações e dicas culinárias, promovendo uma cultura de colaboração e aprendizado mútuo.</Text>
-            <Text style={{paddingTop: 5, textAlign: 'justify'}}> Com a implementação planejada de uma Inteligência Artificial treinada com as melhores receitas, o KiFome está preparado para revolucionar a maneira como as pessoas cozinham em casa. Os usuários terão acesso a um vasto repertório de pratos de qualidade, além de dicas personalizadas para aprimorar suas habilidades culinárias.</Text>
-            <Text style={{paddingTop: 5, textAlign: 'justify'}}> O KiFome é mais do que um aplicativo culinário; é uma ferramenta que combina tradição e inovação, tornando a arte da culinária mais acessível, prazerosa e, acima de tudo, sustentável no século XXI.</Text>
+            <Text style={{paddingTop: 5, textAlign: 'justify'}}>Idealizado por Diego Oliveira Rebouças, Felipe Castelo Hernandes, Isabella Nepomucena dos Santos, Lincon da Silva Ferreira, Ricardo Yudi Takahashi Pimentel, Rita de Cássia dos Santos Lopes e Vitor Hugo Navarro Libano, com menção honrosa para Gustavo Junior dos Santos, este aplicativo culinário surge como uma resposta às necessidades contemporâneas de uma alimentação mais consciente e acessível.</Text>
+            <Text style={{paddingTop: 5, textAlign: 'justify'}}>Partindo da premissa de que a tecnologia pode ser uma aliada na busca por um estilo de vida mais sustentável, o KiFome foi concebido para facilitar a preparação de refeições utilizando apenas os ingredientes disponíveis nas casas dos usuários. Esta abordagem não apenas reduz o desperdício de alimentos, mas também torna a culinária mais inclusiva e econômica.</Text>
+            <Text style={{paddingTop: 5, textAlign: 'justify'}}>A iniciativa dos autores do KiFome vai além de oferecer uma simples coleção de receitas. O aplicativo visa criar uma comunidade engajada em compartilhar experiências, avaliações e dicas culinárias, promovendo uma cultura de colaboração e aprendizado mútuo.</Text>
+            <Text style={{paddingTop: 5, textAlign: 'justify'}}>Com a implementação planejada de uma Inteligência Artificial treinada com as melhores receitas, o KiFome está preparado para revolucionar a maneira como as pessoas cozinham em casa. Os usuários terão acesso a um vasto repertório de pratos de qualidade, além de dicas personalizadas para aprimorar suas habilidades culinárias.</Text>
+            <Text style={{paddingTop: 5, textAlign: 'justify'}}>O KiFome é mais do que um aplicativo culinário; é uma ferramenta que combina tradição e inovação, tornando a arte da culinária mais acessível, prazerosa e, acima de tudo, sustentável no século XXI.</Text>
         </ScrollView>
     );
 
@@ -42,21 +42,86 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
         </ScrollView>
     );
 
+    const handleEmailClick = () => {
+        const email = 'contato@kifome.com.br';
+        const url = `mailto:${email}`;
+        Linking.openURL(url);
+    };
+
+    const central = () => (
+        <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
+            <Text style={{ fontWeight:'bold', textAlign: 'center' }}>Perguntas Frequentes (FAQ)</Text>
+            <Text style={{ paddingTop: 5, fontWeight:'bold' }}> 1. Como funciona o filtro de receitas?</Text>
+            <Text style={{ textAlign: 'justify' }}>O filtro de receitas permite aos usuários encontrar receitas adequadas com base nos ingredientes que já possuem em casa. Os usuários podem adicionar esses ingredientes à sua “geladeira virtual” e o filtro mostrará apenas as receitas que podem ser feitas com eles.</Text>
+            <Text style={{ paddingTop: 5, fontWeight:'bold' }}> 2. Posso compartilhar minhas próprias receitas no KiFome?</Text>
+            <Text style={{ textAlign: 'justify'}}>Sim, os usuários podem compartilhar suas próprias receitas, para fazer isso, basta acessar a função de envio de receitas no aplicativo e preencher as informações necessárias, como os ingredientes, as instruções de preparo e, opcionalmente, adicionar fotos. Depois de enviar a receita, ela será revisada pela equipe do KiFome antes de ser disponibilizada para outros usuários. Compartilhar suas próprias receitas é uma ótima maneira de contribuir para a comunidade do KiFome e ajudar outros usuários a descobrir novos pratos.</Text>
+            <Text style={{ fontWeight:'bold' }}> 3. Como funcionam os níveis e recompensas do aplicativo?</Text>
+            <Text style={{ textAlign: 'justify'}}>O sistema de níveis e recompensas projetado para incentivar a interação dos usuários e premiar a participação ativa na plataforma. Cada usuário começa no nível 1 e pode progredir através dos níveis ganhando KiFomeCoins e desbloqueando novas funcionalidades. As atividades que podem ajudar os usuários a progredir de nível incluem logins diários, avaliações em receitas, comentários marcados como positivos e outras interações positivas com o aplicativo. Conforme os usuários avançam de nível, eles desbloqueiam benefícios adicionais, como a capacidade de fazer comentários em receitas, personalizar avatares e muito mais.</Text>
+            <Text style={{ paddingTop: 5, fontWeight:'bold' }}> 4. O que são KiFomeCoins e como posso ganhá-las?</Text>
+            <Text style={{ textAlign: 'justify'}}>KiFomeCoins são moedas virtuais utilizadas dentro do aplicativo KiFome. Os usuários podem comprar, mas também ganhar de forma gratuita de várias maneiras, incluindo interações positivas com o aplicativo, como compartilhamento de receitas, avaliações positivas em receitas, atualização de perfil e participação em desafios culinários. Essas moedas podem ser trocadas por benefícios dentro do aplicativo, como desbloquear novas funcionalidades, acessar receitas premium e participar de eventos especiais.</Text>
+            <Text style={{ paddingTop: 5, fontWeight:'bold' }}> 5. Posso acessar o KiFome offline?</Text>
+            <Text style={{ textAlign: 'justify'}}>Não, é necessário estar sempre conectado à internet para aproveitar todas as funcionalidades, pois os dados são constantemente atualizados por meio de servidores conectados ao banco de dados, garantindo informações precisas e em tempo real.</Text>
+            <Text style={{ fontWeight:'bold' }}> 6. Como funcionam os desafios culinários?</Text>
+            <Text style={{ textAlign: 'justify'}}>Os desafios culinários do KiFome são atividades temáticas que incentivam os usuários a explorar suas habilidades culinárias e compartilhar suas criações. Em datas especiais os usuários poderam participar desses desafios, postando receitas específicas com alguma temática ou criando pratos com ingredientes específicos. Ao participar, eles podem compartilhar suas receitas no aplicativo e ganhar KiFomeCoins extras ou outros benefícios. Esses desafios promovem a interação, inspiram a criatividade na cozinha e expandem o repertório culinário da comunidade KiFome.</Text>
+            <Text style={{ paddingTop: 10, fontWeight:'bold', textAlign: 'center' }}> Possui uma dúvida diferente?{'\n'}Entre em contato com a gente!</Text>
+            <Text style={{ paddingTop: 5, textAlign: 'center', color: 'blue' }} onPress={handleEmailClick}>contato@kifome.com.br</Text>
+        </ScrollView>
+    );
+
+    const notificacoes = () => (
+        <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
+            <View style={styles.centralOp}>
+                <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Sua Receita:</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Comentários</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários de outros usuários feitos na sua receita.</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Bombando</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se sua receita está recebendo muitas avaliações positivas.</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Alguém que você segue</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se ela interagiu de alguma forma com sua receita.</Text>
+            </View>
+            <View style={styles.centralOp}>
+                <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Atividade das Pessoas que você está seguindo:</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Receita Nova</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se a pessoa publicou uma nova receita.</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Receita Favoritada</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Receitas de outros usuários que ela favoritou.</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Comentário</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários feitos em receitas de outros usuários.</Text>
+            </View>
+            <View style={styles.centralOp}>
+                <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Outros:</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Respostas</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Respostas a seu comentário.</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Desafios</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se está acontecendo algum desafio.</Text>
+                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Lembretes</Text>
+                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Outros avisos.</Text>
+            </View>
+        </ScrollView>
+    );
+
     return (
         <Modal visible={visible} animationType="slide" transparent>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
-                    <Text style={styles.fecharText}>{opcao}</Text>
+                <Text style={[styles.fecharText, { color: '#DF6127' }]}>{opcao}</Text>
                    <TouchableOpacity style={styles.fecharButton} onPress={closeModal}>
                         <Text style={styles.fecharText}>X</Text>
                     </TouchableOpacity>
-                    {opcao === "Sobre o App" ? (
-                        sobre()
-                    ) : opcao === "Termo de Uso" ? (
-                        termo()
-                    ) : (
-                        <Text>{opcao}</Text>
-                    )}
+                    {(() => {
+                    switch (opcao) {
+                        case "Sobre o App":
+                            return sobre();
+                        case "Termo de Uso":
+                            return termo();
+                        case "Central de Ajuda":
+                            return central();
+                        case "Notificações":
+                            return notificacoes();
+                        default:
+                            return <Text>{opcao}</Text>;
+                    }
+                    })()}
                 </View>
             </View>
         </Modal>
@@ -78,7 +143,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     fecharButton: {
-        backgroundColor: 'transparent',
         position: 'absolute',
         top: 0,
         right: 0,
@@ -86,10 +150,17 @@ const styles = StyleSheet.create({
         zIndex: 100,
     },
     fecharText: {
-        color: 'black',
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 20,
         paddingBottom: 10,
+    },
+    centralOp: {
+        width: '100%',
+        borderRadius: 10,
+        marginBottom: 20,
+        borderWidth: 2,
+        padding: 5,
+        
     },
 });
