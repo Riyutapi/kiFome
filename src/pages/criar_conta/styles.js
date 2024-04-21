@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         top: 280,
         right: -80,
         backgroundColor: '#DF6127',
-
     },
 
     circulo4: {

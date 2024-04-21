@@ -2,12 +2,44 @@ import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import styles from "./style";
 import BackButton from "../../components/BackButton";
+import { useNavigation } from '@react-navigation/native';
 
-export default function Receita() {
+export function Receita() {
+    const navigation = useNavigation();
     const [heart, setHeart] = React.useState(true)
+    const [like, setLike] = React.useState(125)
+    const [likeTrue, setLikeTrue] = React.useState(false)
+    const [likeTrueBold, setLikeTrueBold] = React.useState('400')
+    const [dislike, setDislike] = React.useState(2)
+    const [DislikeTrue, setDislikeTrue] = React.useState(false)
+    const [DislikeTrueBold, setDislikeTrueBold] = React.useState('400')
 
     const handleFav = () => {
         setHeart(!heart)
+    }
+
+    const handleLike = () => {
+        if(likeTrue == false) {
+            setLikeTrueBold('700')
+            setLike(like + 1)
+            setLikeTrue(true)
+        }else {
+            setLikeTrueBold('400')
+            setLike(like - 1)
+            setLikeTrue(false)
+        }
+    }
+
+    const handleDislike = () => {
+        if(DislikeTrue == false) {
+            setDislikeTrueBold('700')
+            setDislike(dislike + 1)
+            setDislikeTrue(true)
+        }else {
+            setDislikeTrueBold('400')
+            setDislike(dislike - 1)
+            setDislikeTrue(false)
+        }
     }
 
     return(
@@ -16,7 +48,11 @@ export default function Receita() {
                 {/* Cabeçalho */}
                 <View style={styles.Header}>
                     <View style={styles.headerTop}>
-                        <BackButton color={'#F2F2EC'}/>
+                        
+                    <TouchableOpacity style={styles.superiorEsquerdo}>
+                        <BackButton left={-11} onPress={() => navigation.goBack()}/>
+                    </TouchableOpacity>
+
                         <TouchableOpacity onPress={handleFav} style={styles.imgHeartBox}>
                         {heart ? (
                             <Image style={[styles.imgHeart, {height: 26, width: 26}]} source={require(`../../Assets/blackHeart.png`)}/>
@@ -132,14 +168,15 @@ export default function Receita() {
                                 <Image source={require('../../Assets/threeP.png')}/>
                             </View>
                             <View style={styles.likeDeslikeBox}>
-                                <View style={styles.likeDeslike}>
+                                <TouchableOpacity onPress={handleLike} style={[styles.likeDeslike, {display:'flex'}]}>
                                     <Image source={require('../../Assets/like.png')}/>
-                                    <Text style={{fontSize: 10, fontWeight: '400'}}>125</Text>
-                                </View>
-                                <View style={styles.likeDeslike}>
+                                    <Text style={{fontSize: 10, fontWeight: likeTrueBold}}>{like}</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity onPress={handleDislike} style={styles.likeDeslike}>
                                     <Image source={require('../../Assets/dislike.png')}/>
-                                    <Text style={{fontSize: 10, fontWeight: '400'}}>2</Text>
-                                </View>
+                                    <Text style={{fontSize: 10, fontWeight: DislikeTrueBold}}>{dislike}</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>

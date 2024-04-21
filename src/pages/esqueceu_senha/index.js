@@ -1,10 +1,12 @@
 import React from "react";
 import { TextInput, View, Image, TouchableOpacity, Text } from "react-native";
 import styles from "./styles";
+import BackButton from "../../components/BackButton";
 
 const Esqueceu = () => {
     return (
         <View style={styles.container}>
+            <BackButton top={1} left={-170} color={true} />
             <View style = {styles.circulo4} />
             <View style = {styles.circulo3} />
 

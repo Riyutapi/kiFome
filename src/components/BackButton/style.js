@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        elevation: 3,
     },
     img: {
        marginTop: 5,

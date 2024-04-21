@@ -3,8 +3,10 @@ import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native'
 import styles from "./style";
 import Coin from "../../components/Coin";
 import PerfilComponent from "../../components/Perfil";
+import { useNavigation } from '@react-navigation/native';
 
 export function Favoritos() {
+    const navigation = useNavigation();
     const [search, setSearch] = React.useState('')
 
     const handleSearch = (text) => {
@@ -18,7 +20,7 @@ export function Favoritos() {
                 <PerfilComponent color={"#f2f2ec"} left={-80}/>
             </View>
 
-            <View style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>
+            <View style={{alignSelf: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, marginTop: 15,}}>
                 <Text style={{fontSize: 12, fontWeight: '700', color: '#3E4411'}}>SUAS RECEITAS FAVORITAS</Text>
                 <TextInput style={styles.input} value={search} onChangeText={handleSearch} placeholder='Buscar'/>
             </View>
@@ -72,13 +74,16 @@ export function Favoritos() {
                 <Text style={{fontSize: 11, color: '#3E4411', fontWeight: '400'}}>Selecione a receita desejada:</Text>
             </View>
 
-            <View style={[styles.imgHeartBox]}>
-                        <Image style={[styles.imgHeart, {height: 18, width: 18}]} source={require(`../../Assets/orangeHeart.png`)}/>   
-            </View>
+
             <View style={styles.receitaLista}>
-                <View style={styles.receitaUnid}>
+                <TouchableOpacity style={styles.receitaUnid} onPress={() => {
+                    navigation.navigate('receita')}}>
+
                     <Image source={require('../../Assets/omelete.png')}/>
                     <View style={{display: 'flex', flexDirection: 'column', gap: 10}}>
+                    <View style={[styles.imgHeartBox]}>
+                        <Image style={[styles.imgHeart, {height: 18, width: 18}]} source={require(`../../Assets/orangeHeart.png`)}/>   
+                    </View>
                         <View style={styles.receitaUnidRight}>
                             <View style={styles.orangeCircle}>
                                 <Image source={require('../../Assets/littleHeart.png')}/>
@@ -94,7 +99,9 @@ export function Favoritos() {
                             <Text style={{fontSize: 15, fontWeight: '700', color: '#3E4411'}}>52</Text>
                         </View>
                     </View>
-                </View>
+
+                </TouchableOpacity>
+
                 <Text style={{color: '#DF6127', fontSize: 12, fontWeight: '600'}}>OMELETE TRADICIONAL</Text>
                 <View style={styles.avaliacaoBox}>
                     <View style={styles.avaliacaoUnit}>

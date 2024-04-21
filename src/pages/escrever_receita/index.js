@@ -3,6 +3,8 @@ import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import styles from "./style";
 import Coin from "../../components/Coin";
 import PerfilComponent from "../../components/Perfil";
+import Adicionar from "../../components/Button_adicionar";
+
 
 export function Escrever_Receita() {
     const [search, setSearch] = React.useState('')
@@ -64,10 +66,8 @@ export function Escrever_Receita() {
                 </View>
             </View>
 
-
-            <TouchableOpacity style={styles.addButton2}>
-                    <Text style={styles.addTextButton}>+</Text>
-            </TouchableOpacity>
+            <Adicionar color={"#DF6127"} />
+            
         </View>
     );
 }

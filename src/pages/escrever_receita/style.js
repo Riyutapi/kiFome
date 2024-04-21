@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container:{
         display: 'flex',
         flexDirection: 'column',
-        gap: 20,
+        gap: 10,
         backgroundColor: '#d1d3c1',
         height: 100 + '%',
     },
@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between",
-        margin: 15
+        top: 5,
+        marginHorizontal: 20,
     },
     input: {
         width: 331,
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         paddingLeft: 15,
+        marginTop: 30,
     },
     receitaUnid: {
         display: 'flex',
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: 30,
+        marginTop: 15,
         gap: 10,
         width: 100 + '%',
     },
@@ -79,27 +81,6 @@ const styles = StyleSheet.create({
         gap: 5,
         alignItems: 'center',
     },
-    addButton2: {
-        position: 'absolute',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 54,
-        width: 54,
-        backgroundColor: "#DF6127",
-        borderRadius: 50,
-        marginTop: 420,
-        marginLeft: 165,
-        zIndex: 20,
-    },
-    addTextButton: {
-        fontSize: 31,
-        color: '#fff',
-        textShadowColor: 'rgba(0, 0, 0, 0.5)',
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 5,
-    }
-
 });
 
 export default styles;

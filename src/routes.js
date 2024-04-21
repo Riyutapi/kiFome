@@ -7,6 +7,11 @@ import { Geladeira } from './pages/geladeira';
 import { Buscar_Receita } from './pages/buscar_receita';
 import { Favoritos } from './pages/favoritos';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Login } from './pages/login';
+import { Cadastro } from './pages/criar_conta';
+import { Receita } from './pages/receita';
+import { Receitas } from './pages/receitas_pesquisadas';
+import { Esqueceu } from './pages/esqueceu_senha';
 
 
 const Stack = createStackNavigator();
@@ -16,12 +21,14 @@ function Menu() {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
         tabBarStyle:{ 
           position:'absolute',
-          backgroundColor: '#D1D3C1',
+          backgroundColor: 'transparent',
+          borderColor:'transparent',
           elevation: 0,
-          height:'10%',
+          height: 84,
         }}}>
       <Tab.Screen name="geladeira" 
         component={Geladeira} 
@@ -37,6 +44,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Freezer.png')}
@@ -62,6 +70,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Book.png')}
@@ -88,6 +97,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Heart.png')}
@@ -114,6 +124,7 @@ function Menu() {
               backgroundColor: '#F2F2EC',
               justifyContent: 'center',
               alignItems: 'center',
+              elevation: 2,
             }}>
               <Image
                 source={require('./Assets/Pen.png')}
@@ -133,7 +144,17 @@ function Menu() {
 export function Routes(){
     return (
         <Stack.Navigator>
+          <Stack.Screen name="login" component={Login} 
+            options={{ headerShown: false }}/>
+            <Stack.Screen name="cadastro" component={Cadastro} 
+            options={{ headerShown: false }}/>
+            <Stack.Screen name="esqueceu" component={Esqueceu} 
+            options={{ headerShown: false }}/>
           <Stack.Screen name="menu" component={Menu} 
+            options={{ headerShown: false }}/>
+          <Stack.Screen name="receita" component={Receita} 
+            options={{ headerShown: false }}/>
+          <Stack.Screen name="receita_pesquisa" component={Receitas} 
             options={{ headerShown: false }}/>
           <Stack.Screen name="perfil" component={Perfil} 
             options={{ headerShown: false }}/>

@@ -3,9 +3,11 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./style";
 import PerfilComponent from "../../components/Perfil";
 import BackButton from "../../components/BackButton";
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Receitas() {
+export function Receitas() {
+    const navigation = useNavigation();
     const filterOp = [
         { label: 'Avaliação', value: 'option1' },
         { label: 'Tempo de preparo', value: 'option2' },
@@ -15,7 +17,10 @@ export default function Receitas() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <BackButton color={"#f2f2ec"}/>
+                <TouchableOpacity>
+                   <BackButton top={-15} left={10} onPress={() => navigation.goBack()}/>
+                </TouchableOpacity>
+
                 <PerfilComponent color={"#f2f2ec"} left={-80}/>
             </View>
 
