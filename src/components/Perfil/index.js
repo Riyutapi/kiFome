@@ -14,7 +14,7 @@ export default function PerfilComponent({color, left}){
             }}>
                 <View style={styles.leftTitle}>
                     <Text style={styles.nameBox}>
-                        <Text>Diego Freire - </Text>
+                        <Text>Diego_Freire - </Text>
                         <Text style={styles.Level}>Nível 01</Text>
                     </Text>
                         <Text style={styles.category}>Auxiliar de Cozinha</Text>

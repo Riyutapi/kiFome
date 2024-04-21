@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking, Switch } from 'react-native';
 
 export default function ModalPerfil({ visible, opcao, closeModal }) {
@@ -68,48 +68,180 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
         </ScrollView>
     );
 
+    const [isEnabledMain, setIsEnabledMain] = useState([true, true, true]);
+    const [isEnabled, setIsEnabled] = useState([
+        [true, true, true],
+        [true, true, true],
+        [true, true, true]
+    ]);
+    
+    const toggleSwitchMain = groupIndex => () => {
+        const nextState = !isEnabledMain[groupIndex];
+        setIsEnabledMain(prevState => {
+            const newState = [...prevState];
+            newState[groupIndex] = nextState;
+            return newState;
+        });
+    
+        setIsEnabled(prevState => {
+            const newState = prevState.map((group, index) => {
+                if (index === groupIndex) {
+                    return group.map(() => nextState);
+                } else {
+                    return group;
+                }
+            });
+            return newState;
+        });
+    };
+    
+    const toggleSwitch = (groupIndex, switchIndex) => () => {
+        setIsEnabled(prevState => {
+            const newState = prevState.map((group, index) => {
+                if (index === groupIndex) {
+                    return group.map((val, i) => (i === switchIndex ? !val : val));
+                } else {
+                    return group;
+                }
+            });
+            return newState;
+        });
+    };
+    
+
     const notificacoes = () => (
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
             <View style={styles.centralOp}>
+                <Text style={{ paddingBottom: 10, fontWeight: 'bold', color: '#DF6127' }}>Sua Receita:</Text>
+                <Switch
+                    style={{ position: 'absolute', top: 0, right: 11 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabledMain[0] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitchMain(0)}
+                    value={isEnabledMain[0]}/>
+                <View style={{ borderBottomWidth: 1, borderBottomColor: '#AFB297' }} />
                 <View>
-                    <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Sua Receita:</Text>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Comentários</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários de outros usuários feitos na sua receita.</Text>
                     <Switch
-                        trackColor={{false: '#767577', true: '#81b0ff'}}
-                        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={toggleSwitch}
-                        value={isEnabled}/>
-                    <View>
-                        <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Comentários</Text>
-                        <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários de outros usuários feitos na sua receita.</Text>
-                    </View>
-                    <View>
-                        <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Bombando</Text>
-                        <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se sua receita está recebendo muitas avaliações positivas.</Text>
-                    </View>
-                    <View>
-                        <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Alguém que você segue</Text>
-                        <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se ela interagiu de alguma forma com sua receita.</Text>
-                    </View>    
-                </View>   
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[0][0] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(0, 0)}
+                    value={isEnabled[0][0]}/>
+                </View>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Bombando</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se sua receita está recebendo muitas avaliações positivas.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[0][1] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(0,1)}
+                    value={isEnabled[0][1]}/>
+                </View>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Alguém que você segue</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se ela interagiu de alguma forma com sua receita.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[0][2] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(0,2)}
+                    value={isEnabled[0][2]}/>
+                </View>    
             </View>
             <View style={styles.centralOp}>
-                <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Atividade das Pessoas que você está seguindo:</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Receita Nova</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se a pessoa publicou uma nova receita.</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Receita Favoritada</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Receitas de outros usuários que ela favoritou.</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Comentário</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários feitos em receitas de outros usuários.</Text>
+                <Text style={{ paddingBottom: 10, fontWeight:'bold', color: '#DF6127' }}>Atividade das Pessoas que você está seguindo:</Text>
+                <Switch
+                        style={{ position: 'absolute', top: 0, right: 11 }}
+                        trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                        thumbColor={isEnabledMain[1] ? '#DF6127' : '#AFB297'}
+                        ios_backgroundColor="#DF6127"
+                        onValueChange={toggleSwitchMain(1)}
+                        value={isEnabledMain[1]}/>
+                <View style={{ borderBottomWidth: 1, borderBottomColor: '#AFB297' }}/>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Receita Nova</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se a pessoa publicou uma nova receita.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[1][0] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(1, 0)}
+                    value={isEnabled[1][0]}/>
+                </View>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Receita Favoritada</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Receitas de outros usuários que ela favoritou.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[1][1] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(1, 1)}
+                    value={isEnabled[1][1]}/>
+                </View>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Comentário</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários feitos em receitas de outros usuários.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[1][2] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(1, 2)}
+                    value={isEnabled[1][2]}/>
+                </View>
             </View>
             <View style={styles.centralOp}>
-                <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Outros:</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Respostas</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Respostas a seu comentário.</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Desafios</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se está acontecendo algum desafio.</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Lembretes</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Outros avisos.</Text>
+                <Text style={{ paddingBottom: 10, fontWeight:'bold', color: '#DF6127' }}>Outros:</Text>
+                <Switch
+                        style={{ position: 'absolute', top: 0, right: 11 }}
+                        trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                        thumbColor={isEnabledMain[2] ? '#DF6127' : '#AFB297'}
+                        ios_backgroundColor="#DF6127"
+                        onValueChange={toggleSwitchMain(2)}
+                        value={isEnabledMain[2]}/>
+                <View style={{ borderBottomWidth: 1, borderBottomColor: '#AFB297' }}/>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Respostas</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Respostas a seu comentário.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[2][0] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(2, 0)}
+                    value={isEnabled[2][0]}/>
+                </View>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Desafios</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se está acontecendo algum desafio.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[2][1] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(2, 1)}
+                    value={isEnabled[2][1]}/>
+                </View>
+                <View>
+                    <Text style={{ paddingBottom: 5, paddingTop: 10, fontWeight:'bold', textAlign: 'justify'}}>Lembretes</Text>
+                    <Text style={{ fontSize: 12, textAlign: 'justify'}}>Outros avisos.</Text>
+                    <Switch
+                    style={{ position: 'absolute', top: -5, right: 0 }}
+                    trackColor={{false: 'rgba(175, 178, 151, 0.5)', true: 'rgba(223, 97, 39, 0.5)'}}
+                    thumbColor={isEnabled[2][2] ? '#DF6127' : '#AFB297'}
+                    ios_backgroundColor="#DF6127"
+                    onValueChange={toggleSwitch(2, 2)}
+                    value={isEnabled[2][2]}/>
+                </View>
             </View>
         </ScrollView>
     );
@@ -174,7 +306,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 20,
         borderWidth: 2,
-        padding: 5,
-        
+        padding: 12,
     },
+    
 });

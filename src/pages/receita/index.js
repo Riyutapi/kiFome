@@ -149,7 +149,7 @@ export function Receita() {
                         <Text style={styles.prepareNumber}>04</Text>
                         <Text style={styles.prepareText}>Está pronto um omelete delicioso, bom apetite!</Text>
                     </View>
-                    <Text style={{ fontSize: 12 }}>Por <Text style={{ textDecorationLine: 'underline' }}> Rita Navarro</Text></Text>
+                    <Text style={{ fontSize: 12 }}>Por <Text style={{ textDecorationLine: 'underline' }}> Rita_Navarro</Text></Text>
 
                 </View>
 
@@ -188,7 +188,7 @@ export function Receita() {
                         <Image source={require('../../Assets/comentPhoto.png')} />
                         <View style={styles.comentMidRight}>
                             <View style={styles.comentMidName}>
-                                <Text style={{ fontSize: 10, fontWeight: '700' }}>Gustavo Anghel</Text>
+                                <Text style={{ fontSize: 10, fontWeight: '700' }}>Gustavo_Anghel</Text>
                                 <Text style={{ fontSize: 8, fontWeight: '400' }}>Há 1 Ano</Text>
                             </View>
                             <View style={styles.comentMidText}>

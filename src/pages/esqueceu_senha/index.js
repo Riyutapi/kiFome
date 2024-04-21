@@ -1,18 +1,37 @@
-import { View, Text, StyleSheet } from 'react-native'
+import React from "react";
+import { TextInput, View, Image, TouchableOpacity, Text } from "react-native";
+import styles from "./styles";
+import BackButton from "../../components/BackButton";
 
 export function Esqueceu(){
-    return(
+    return (
         <View style={styles.container}>
-            <Text>Esqueceu a Senha</Text>
-        </View>
-    )
-}
+            <BackButton top={1} left={-170} color={true} />
+            <View style = {styles.circulo4} />
+            <View style = {styles.circulo3} />
 
-const styles = StyleSheet.create({
-    container:{
-    flex: 1,
-    backgroundColor: "#D1D3C1",
-    justifyContent: 'center',
-    alignItems: 'center',
-    },
-})
+            <View style = {styles.logo}>
+                <Image style = {styles.image} source={require("../../../assets/icon.png")} />
+            </View>
+
+            <View style = {styles.titulo}>
+                    <Text style = {styles.tituloText}>Recuperar Senha</Text>
+            </View>
+
+            <View style = {styles.mensagem}>
+                    <Text style = {styles.mensagemText}>Nos informe o seu E-mail para que possamos te mandar a solicitação!</Text>
+            </View>
+
+            <View style = {styles.form}>
+
+                <View style = {styles.boxes}>
+                    <TextInput style = {styles.input} placeholder = "E-mail" />
+                </View>
+
+                <TouchableOpacity style = {styles.botao}>
+                    <Text style = {styles.botaoText}>Enviar</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
