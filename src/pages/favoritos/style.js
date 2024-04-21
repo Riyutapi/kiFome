@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     container:{
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
         gap: 20,
         backgroundColor: '#d1d3c1',
         height: 100 + '%',
@@ -29,17 +30,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingLeft: 15,
     },
-    categoria:{
-        height: 45,
-        width: 45,
-        borderWidth: 1,
-        borderRadius: 10,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 8,
-        backgroundColor: '#fff'
-    },
+
     imgHeartBox:{
         position: 'absolute',
         marginTop: -65,
@@ -52,13 +43,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#F2F2EC',
         zIndex: 1000,
-    },
-    catBox: {
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     catTitle: {
         display: 'flex',

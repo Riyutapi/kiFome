@@ -37,24 +37,6 @@ const styles = StyleSheet.create({
         width: 700,
         marginTop: -80,
     },
-    addButton: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 54,
-        width: 54,
-        backgroundColor: "#AFB297",
-        borderRadius: 50,
-        marginTop: 20,
-        marginLeft: 150,
-    },
-    addTextButton: {
-        fontSize: 31,
-        color: '#fff',
-        textShadowColor: 'rgba(0, 0, 0, 0.5)',
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 5,
-    },
     miniCircle: {
         height: 17,
         width: 17,
@@ -73,7 +55,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 220,
     },
-    addIngredient:{
+    addIngredient: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -153,21 +135,6 @@ const styles = StyleSheet.create({
         width: 25,
         borderRadius: 10,
         borderWidth: 2,
-    },
-    backButton: {
-        marginTop: 190,
-        marginLeft: -60,
-        position: 'absolute',
-        height: 50,
-        width: 50,
-        backgroundColor: '#D1D3C1',
-        borderRadius: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    backButtonImg: {
-        marginTop: 5
     },
 
     //Seus Ingredientes

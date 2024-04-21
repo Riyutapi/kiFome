@@ -212,6 +212,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1.5,
         marginBottom: 15,
     },
+    avaliacaoChapeu: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 7,
+    },
 
     //Comentario
     comentBox:{

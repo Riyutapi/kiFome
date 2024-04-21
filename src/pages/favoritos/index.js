@@ -4,6 +4,7 @@ import styles from "./style";
 import Coin from "../../components/Coin";
 import PerfilComponent from "../../components/Perfil";
 import { useNavigation } from '@react-navigation/native';
+import Categorias from "../../components/Categorias";
 
 export function Favoritos() {
     const navigation = useNavigation();
@@ -16,7 +17,7 @@ export function Favoritos() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Coin />
+                <Coin/>
                 <PerfilComponent color={"#f2f2ec"} left={-80}/>
             </View>
 
@@ -25,50 +26,7 @@ export function Favoritos() {
                 <TextInput style={styles.input} value={search} onChangeText={handleSearch} placeholder='Buscar'/>
             </View>
 
-
-            <View style={styles.catBox}>
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, opacity: .6}}>
-                    <View style={[styles.categoria, {width: 30, height: 30}]}>
-                    <Image source={require('../../Assets/Doce.png')}/>
-                    </View>
-                    <Text style={{fontSize: 7, color: '#3E4411', fontWeight: '700'}}>Doce</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/catBolo.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Brunch</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/Almoco.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Almoço</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/Manha.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Manha</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/Jantar.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Jantar</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, opacity: .6}}>
-                    <View style={[styles.categoria, {width: 30, height: 30}]}>
-                    <Image source={require('../../Assets/Fruta.png')}/>
-                    </View>
-                    <Text style={{fontSize: 7, color: '#3E4411', fontWeight: '700'}}>Fruta</Text>
-                </TouchableOpacity>
-            </View>
+            <Categorias/>
 
             <View style={styles.catTitle}>
                 <Text style={{fontSize: 11, color: '#3E4411', fontWeight: '400'}}>Selecione a receita desejada:</Text>

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles";
-import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
+import { View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../../components/BackButton';
 import But from '../../components/Button';

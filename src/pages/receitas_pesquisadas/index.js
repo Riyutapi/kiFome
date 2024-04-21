@@ -1,10 +1,14 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Dimensions } from "react-native";
 import styles from "./style";
 import PerfilComponent from "../../components/Perfil";
 import BackButton from "../../components/BackButton";
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
+import Categorias from "../../components/Categorias";
+
+const { width } = Dimensions.get('window');
+const itemWidth = width * 0.9; // Adjust the width of items according to screen width
 
 export function Receitas() {
     const navigation = useNavigation();
@@ -32,56 +36,14 @@ export function Receitas() {
                 </Picker>
             </View>
 
-            <View style={styles.catBox}>
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, opacity: .6}}>
-                    <View style={[styles.categoria, {width: 30, height: 30}]}>
-                    <Image source={require('../../Assets/Doce.png')}/>
-                    </View>
-                    <Text style={{fontSize: 7, color: '#3E4411', fontWeight: '700'}}>Doce</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/catBolo.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Brunch</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/Almoco.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Almoço</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/Manha.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Manha</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5}}>
-                    <View style={styles.categoria}>
-                    <Image source={require('../../Assets/Jantar.png')}/>
-                    </View>
-                    <Text style={{fontSize: 8, color: '#3E4411', fontWeight: '700'}}>Jantar</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, opacity: .6}}>
-                    <View style={[styles.categoria, {width: 30, height: 30}]}>
-                    <Image source={require('../../Assets/Fruta.png')}/>
-                    </View>
-                    <Text style={{fontSize: 7, color: '#3E4411', fontWeight: '700'}}>Fruta</Text>
-                </TouchableOpacity>
-            </View>
+            <Categorias/>
 
             <View style={styles.catTitle}>
                 <Text style={{fontSize: 12, color: '#3E4411', fontWeight: '700'}}>DISPONÍVEL EM SUA GELADEIRA</Text>
                 <Text style={{fontSize: 11, color: '#3E4411', fontWeight: '400'}}>Selecione a receita desejada:</Text>
             </View>
 
-            <View style={styles.receitaLista}>
+            <View style={[styles.receitaLista, { width: itemWidth }]}>
                 <View style={styles.receitaUnid}>
                     <Image source={require('../../Assets/omelete.png')}/>
                     <View style={{display: 'flex', flexDirection: 'column', gap: 10}}>
@@ -122,7 +84,7 @@ export function Receitas() {
                 </View>
             </View>
 
-            <View style={[styles.receitaLista, {opacity: .6}]}>
+            <View style={[styles.receitaLista, { width: itemWidth, opacity: .6 }]}>
                 <View style={[styles.receitaUnid, {marginLeft: -10}]}>
                     <Image source={require('../../Assets/omelete2.png')}/>
                 </View>

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginLeft: 165,
         zIndex: 20,
-        bottom: 100,
+        bottom: 130,
         position: 'absolute',
         elevation: 2,
     },
