@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking, Switch } from 'react-native';
 
 export default function ModalPerfil({ visible, opcao, closeModal }) {
     const sobre = () => (
@@ -71,13 +71,27 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
     const notificacoes = () => (
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
             <View style={styles.centralOp}>
-                <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Sua Receita:</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Comentários</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários de outros usuários feitos na sua receita.</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Bombando</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se sua receita está recebendo muitas avaliações positivas.</Text>
-                <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Alguém que você segue</Text>
-                <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se ela interagiu de alguma forma com sua receita.</Text>
+                <View>
+                    <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Sua Receita:</Text>
+                    <Switch
+                        trackColor={{false: '#767577', true: '#81b0ff'}}
+                        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleSwitch}
+                        value={isEnabled}/>
+                    <View>
+                        <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Comentários</Text>
+                        <Text style={{ fontSize: 12, textAlign: 'justify'}}>Comentários de outros usuários feitos na sua receita.</Text>
+                    </View>
+                    <View>
+                        <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Bombando</Text>
+                        <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se sua receita está recebendo muitas avaliações positivas.</Text>
+                    </View>
+                    <View>
+                        <Text style={{ fontWeight:'bold', textAlign: 'justify'}}>Alguém que você segue</Text>
+                        <Text style={{ fontSize: 12, textAlign: 'justify'}}>Se ela interagiu de alguma forma com sua receita.</Text>
+                    </View>    
+                </View>   
             </View>
             <View style={styles.centralOp}>
                 <Text style={{ fontWeight:'bold', color: '#DF6127' }}>Atividade das Pessoas que você está seguindo:</Text>
