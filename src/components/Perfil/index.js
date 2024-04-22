@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import styles from "./style";
 
@@ -19,7 +19,9 @@ export default function PerfilComponent({color, left}){
                     </Text>
                         <Text style={styles.category}>Auxiliar de Cozinha</Text>
                 </View>
-                <Text style={styles.imgBox}></Text>
+                <View style={styles.imgBox}>
+                    <Image source={require('../../Assets/imagem_usuario.png')} style={styles.img} />
+                </View>
             </TouchableOpacity>
         </View>
     );

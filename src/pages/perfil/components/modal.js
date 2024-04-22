@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking, S
 export default function ModalPerfil({ visible, opcao, closeModal }) {
     const sobre = () => (
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
-            <Text style={{textAlign: 'justify'}}> O KiFome é o resultado de um projeto inovador desenvolvido por um grupo de estudantes universitários comprometidos com a criação de soluções práticas e sustentáveis para o dia a dia.</Text>
+            <Text style={{textAlign: 'justify'}}>O KiFome é o resultado de um projeto inovador desenvolvido por um grupo de estudantes universitários comprometidos com a criação de soluções práticas e sustentáveis para o dia a dia.</Text>
             <Text style={{paddingTop: 5, textAlign: 'justify'}}>Idealizado por Diego Oliveira Rebouças, Felipe Castelo Hernandes, Isabella Nepomucena dos Santos, Lincon da Silva Ferreira, Ricardo Yudi Takahashi Pimentel, Rita de Cássia dos Santos Lopes e Vitor Hugo Navarro Libano, com menção honrosa para Gustavo Junior dos Santos, este aplicativo culinário surge como uma resposta às necessidades contemporâneas de uma alimentação mais consciente e acessível.</Text>
             <Text style={{paddingTop: 5, textAlign: 'justify'}}>Partindo da premissa de que a tecnologia pode ser uma aliada na busca por um estilo de vida mais sustentável, o KiFome foi concebido para facilitar a preparação de refeições utilizando apenas os ingredientes disponíveis nas casas dos usuários. Esta abordagem não apenas reduz o desperdício de alimentos, mas também torna a culinária mais inclusiva e econômica.</Text>
             <Text style={{paddingTop: 5, textAlign: 'justify'}}>A iniciativa dos autores do KiFome vai além de oferecer uma simples coleção de receitas. O aplicativo visa criar uma comunidade engajada em compartilhar experiências, avaliações e dicas culinárias, promovendo uma cultura de colaboração e aprendizado mútuo.</Text>
@@ -108,7 +108,6 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
         });
     };
     
-
     const notificacoes = () => (
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
             <View style={styles.centralOp}>
@@ -308,5 +307,4 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         padding: 12,
     },
-    
 });

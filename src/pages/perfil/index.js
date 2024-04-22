@@ -6,11 +6,13 @@ import Item from './components/itens'
 import Versao from '../../components/versao'
 import { useNavigation } from '@react-navigation/native';
 import ModalPerfil from './components/modal'
+import ModalUpeMais from '../../components/Nivel_insuficiente';
 
 
 export function Perfil() {
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible1, setModalVisible1] = useState(false);
     const [opcao, setOpcao] = useState(null);
 
     const openModal = (opcao) => {
@@ -23,13 +25,21 @@ export function Perfil() {
         setOpcao(null);
     };
 
+    const openModal2 = () => {
+        setModalVisible1(true);
+    };
+
+    const closeModal2 = () => {
+        setModalVisible1(false);
+    };
+
     return (
         <View style={styles.container}>
             
             <View style={styles.perfil}>
-                <View style={styles.imgBox}>
+                <TouchableOpacity style={styles.imgBox} onPress={() => openModal2()}>
                     <Image source={require("../../Assets/imagem_usuario.png")} style={styles.imgBoxImage} resizeMode="cover" />
-                </View>
+                </TouchableOpacity>
                 <Text style={styles.Level}>Nível 01</Text>
                 <Text style={styles.category}>Auxiliar de Cozinha</Text>
             </View>
@@ -56,7 +66,8 @@ export function Perfil() {
                 </TouchableOpacity>
             </View>
 
-            <ModalPerfil visible={modalVisible} opcao={opcao} closeModal={closeModal} />
+            <ModalPerfil visible={modalVisible} opcao={opcao} closeModal={closeModal}/>
+            <ModalUpeMais visible={modalVisible1} closeModal={closeModal2}/>
 
             <Versao/>
 
