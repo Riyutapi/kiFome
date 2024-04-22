@@ -49,8 +49,8 @@ export function Perfil() {
             </TouchableOpacity>
 
             <View style={styles.retanguloContainer}>
-                <TouchableOpacity onPress={() => openModal("Meus dados")}>
-                    <Item espaço1={24} espaço2={4} imagem={require("./assets/dados.png")} texto="Meus dados"/>
+                <TouchableOpacity onPress={() => openModal("Meus Dados")}>
+                    <Item espaço1={24} espaço2={4} imagem={require("./assets/dados.png")} texto="Meus Dados"/>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => openModal("Notificações")}>
                     <Item espaço1={20} espaço2={3} imagem={require("./assets/notificacao.png")} texto="Notificações"/>

@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking, Switch } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking, Switch, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ModalPerfil({ visible, opcao, closeModal }) {
+    const navigation = useNavigation();
+
     const sobre = () => (
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
             <Text style={{textAlign: 'justify'}}>O KiFome é o resultado de um projeto inovador desenvolvido por um grupo de estudantes universitários comprometidos com a criação de soluções práticas e sustentáveis para o dia a dia.</Text>
@@ -244,13 +247,139 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
             </View>
         </ScrollView>
     );
+    
+    const [openSecondModal, setOpenSecondModal] = useState(null);
+    const [loginInputValue, setLoginInputValue] = useState('Diego_Freire');
+    const [emailInputValue, setEmailInputValue] = useState('diegogarotolegal@gmail.com');
+    const senhaCorreta = '12345';
+    const [senhaDigitada, setSenhaDigitada] = useState('');
+    const [corBotao, setCorBotao] = useState('#AFB297');
+    const verificarSenha = (text) => {
+        setSenhaDigitada(text);
+        if (text === senhaCorreta) {
+            setCorBotao('#DF6127');
+            setAvisoSenhaIncorreta(false);
+            setConfirmar(true);
+        } else {
+            setCorBotao('#AFB297');
+        }
+    };
+    const [confirmar, setConfirmar] = useState(false);
+    const [avisoSenhaIncorreta, setAvisoSenhaIncorreta] = useState(false);
+
+    const handleConfirmar = () => {
+        if (confirmar) {
+            navigation.navigate('login');
+        } else {
+            setAvisoSenhaIncorreta(true);
+        }
+    }
+
+    const dados = () => (
+        <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
+            <Text style={{ fontWeight: '600', paddingBottom: 20, textAlign: 'center'}}>Deseja alterar algum dado?</Text>
+            <TouchableOpacity onPress={() => setOpenSecondModal('Nome de usuário')} style={styles.centralOp}>
+                <Text style={{ fontWeight: 'bold' }}>Nome de usuário (login):</Text>
+                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{loginInputValue}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setOpenSecondModal('E-mail')} style={styles.centralOp}>
+                <Text style={{ fontWeight: 'bold' }}>E-mail:</Text>
+                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{emailInputValue}</Text>
+            </TouchableOpacity>
+                <TouchableOpacity onPress={() => setOpenSecondModal('Senha')} style={styles.centralOp}>
+                <Text style={{ fontWeight: 'bold' }}>Senha</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setOpenSecondModal('Excluir conta')} style={styles.centralOp}>
+                <Text style={{ color: 'red', fontWeight: 'bold' }}>Excluir conta</Text>
+            </TouchableOpacity>
+        </ScrollView>
+    );
+
+    const OpenSecondModal = () => {
+        const [confirmar, setConfirmar] = useState(false);
+        return (
+            <Modal visible={openSecondModal !== null} animationType="fade" transparent>
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalDados}>
+                        <Text style={[styles.fecharText, { color: '#DF6127' }]}>{openSecondModal}</Text>
+                        <TouchableOpacity style={styles.fecharButton} onPress={() => setOpenSecondModal(null)}>
+                            <Text style={styles.fecharText}>X</Text>
+                        </TouchableOpacity>
+                        {(() => {
+                            switch (openSecondModal) {
+                            case "Nome de usuário":
+                                return (
+                                    <View>
+                                        <TextInput
+                                        style={styles.input}
+                                        placeholder="Digite o nome de usuário"
+                                        value={loginInputValue}
+                                        clearButtonMode="while-editing"
+                                        onChangeText={setLoginInputValue}/>
+                                    </View> 
+                                );
+                            case "E-mail":
+                                return (
+                                    <View>
+                                        {(() => {
+                                        switch (confirmar) {
+                                            case false:
+                                                <View>
+                                                    <Text style={{ fontWeight: '600', paddingBottom: 20, textAlign: 'center'}}>Precisamos verificar com seu antigo e-mail, para poder alterá-lo</Text>
+                                                </View>
+                                            case true:
+                                                return (
+                                                    <TextInput
+                                                    style={styles.input}
+                                                    placeholder="Digite o nome de usuário"
+                                                    value={emailInputValue}
+                                                    clearButtonMode="while-editing"
+                                                    onChangeText={setEmailInputValue}/>
+                                               );
+                                        }})()}
+                                    </View>    
+                                );
+                            case "Senha":
+                                return (
+                                    <View>
+                                        <TextInput placeholder="Digite a senha Atual" secureTextEntry/>
+                                        <TextInput placeholder="Digite a nova senha" secureTextEntr/>
+                                    </View>
+                                );
+                            case "Excluir conta":
+                                return (
+                                    <View>
+                                        <Text style={{ paddingBottom: 10 }}>Tem certeza que deseja excluir sua conta?</Text>
+                                        <TextInput
+                                            placeholder="Digite a senha Atual"
+                                            secureTextEntry
+                                            onChangeText={(text) => {
+                                                setSenhaDigitada(text);
+                                                verificarSenha(text);
+                                            }}/>
+                                        <TouchableOpacity
+                                            onPress={verificarSenha}>
+                                            <Text style={[styles.botaoConfirma, { backgroundColor: corBotao }]} onPress={handleConfirmar}>Confirmar</Text>
+                                        </TouchableOpacity>
+                                        {avisoSenhaIncorreta && <Text style={{ color: 'red', textAlign: 'center'}}>Senha Incorreta</Text>}
+                                    </View>
+                                );
+                            default:
+                                return <Text>{openSecondModal}</Text>;
+                            }
+                        })()}
+                    </View>
+                </View>
+            </Modal>
+        );
+    }
 
     return (
         <Modal visible={visible} animationType="slide" transparent>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
-                <Text style={[styles.fecharText, { color: '#DF6127' }]}>{opcao}</Text>
-                   <TouchableOpacity style={styles.fecharButton} onPress={closeModal}>
+                    <Text style={[styles.fecharText, { color: '#DF6127' }]}>{opcao}</Text>
+                    <TouchableOpacity style={styles.fecharButton} onPress={closeModal}>
                         <Text style={styles.fecharText}>X</Text>
                     </TouchableOpacity>
                     {(() => {
@@ -263,15 +392,18 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
                             return central();
                         case "Notificações":
                             return notificacoes();
+                        case "Meus Dados":
+                        return dados();
                         default:
-                            return <Text>{opcao}</Text>;
+                        return <Text>{opcao}</Text>;
                     }
                     })()}
+                    {OpenSecondModal()}
                 </View>
             </View>
         </Modal>
     );
-} 
+}
 
 const styles = StyleSheet.create({
     modalContainer: {
@@ -283,7 +415,13 @@ const styles = StyleSheet.create({
     modalContent: {
         backgroundColor: 'white',
         width: '90%',
-        height: '90%',
+        maxHeight: '90%',
+        padding: 20,
+        borderRadius: 10,
+    },
+    modalDados: {
+        backgroundColor: 'white',
+        width: '70%',
         padding: 20,
         borderRadius: 10,
     },
@@ -306,5 +444,18 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderWidth: 2,
         padding: 12,
+    },
+    input: {
+        justifyContent: 'center',
+        padding: 5,
+    },
+    botaoConfirma: {
+        marginTop: 20,
+        textAlign: 'center',
+        alignSelf: 'center',
+        fontWeight: '500',
+        padding: 15,
+        color: 'white',
+        borderRadius: 10,
     },
 });
