@@ -72,11 +72,35 @@ const styles = StyleSheet.create({
         color: '#030303',
     },
 
+
     recuperarSenhaText: {
         fontSize: 14.5,
         fontWeight: '600',
         color: '#ffffff',
         paddingBottom: 50,
+    },
+
+    botao: {
+        width: '60%',
+        height: 50,
+        backgroundColor: 'rgb(222, 96, 38)',
+        borderRadius: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: '#571c00e5',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+
+    botaoText: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: 'rgba(255, 255, 255, 0.849)',
     },
 
     novaContaText: {

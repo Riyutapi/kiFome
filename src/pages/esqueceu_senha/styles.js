@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
     logo: {
         padding: 140,
-        paddingTop: 0,
+        paddingTop: 15,
     },
 
     circulo3: {

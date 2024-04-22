@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
     logo: {
         padding: 120,
-        paddingTop: 70,
+        paddingTop: 30,
     },
 
     circulo3: {
@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'rgba(2, 2, 2, 0.849)',
         paddingHorizontal: 10,
-        paddingTop: -2,
     },
 
     input: {
@@ -68,6 +67,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         color: '#030303',
     },
+
+    But: {
+        paddingBottom: 30,
+        paddingTop: 20,
+    }
 });
 
 export default styles;

@@ -15,7 +15,7 @@ export function Cadastro () {
             <View style = {styles.circulo3}></View>
 
             <TouchableOpacity style={styles.superiorEsquerdo}>
-                <BackButton top={80} left={-180} onPress={() => navigation.goBack()}/>
+                <BackButton top={1} left={-170} onPress={() => navigation.goBack()}/>
             </TouchableOpacity>
 
             <View style={styles.logo}>
@@ -23,10 +23,6 @@ export function Cadastro () {
             </View>
 
             <View style={styles.form}>
-
-                <View>
-                    <TextInput style={styles.input} placeholder="Nome" />
-                </View>
 
                 <View style={styles.boxes}>
                     <TextInput style={styles.input} placeholder="Login" />
@@ -44,8 +40,9 @@ export function Cadastro () {
                     <TextInput style={styles.input} placeholder="Confirmar Senha" secureTextEntry={true} />
                 </View>
 
-                <But texto={'CRIAR'} onPress={() => navigation.navigate('login')}/>
-
+                <View style = {styles.But}>
+                    <But texto={'CRIAR'} onPress={() => navigation.navigate('login')}/>
+                </View>
             </View>
         </View>
     );
