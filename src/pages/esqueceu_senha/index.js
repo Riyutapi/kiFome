@@ -2,13 +2,17 @@ import React from "react";
 import { TextInput, View, Image, TouchableOpacity, Text } from "react-native";
 import styles from "./styles";
 import BackButton from "../../components/BackButton";
+import { useNavigation } from '@react-navigation/native';
 
-export function Esqueceu(){
+
+export function Esqueceu() {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
-            <BackButton top={1} left={-170} color={true} />
-            <View style = {styles.circulo4} />
-            <View style = {styles.circulo3} />
+            <BackButton top={40} left={-170} onPress={() => navigation.goBack()}/>
+            <View style = {styles.circulo4}/>
+            <View style = {styles.circulo3}/>
 
             <View style = {styles.logo}>
                 <Image style = {styles.image} source={require("../../../assets/icon.png")} />

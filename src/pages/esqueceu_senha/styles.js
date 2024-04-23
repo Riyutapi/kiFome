@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native-web";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
     logo: {
         padding: 140,
-        paddingTop: 0,
+        paddingTop: 15,
     },
 
     circulo3: {
@@ -97,13 +97,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 32,
-        boxShadowColor: '#571c00e5',
-        boxShadowOffset: {
+        shadowColor: '#571c00e5',
+        shadowOffset: {
             width: 0,
             height: 2,
         },
-        boxShadowOpacity: 0.25,
-        boxShadowRadius: 3.84,
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
         elevation: 5,
     },
 
