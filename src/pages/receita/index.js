@@ -195,17 +195,22 @@ export function Receita() {
                                 <Text style={{ fontSize: 10, fontWeight: '400', color: '#3E4411', width: 300, }}>Eu simplesmente adorei esta receita de omelete! O sabor ficou incrível, e a textura ficou perfeita - não muito seca, nem muito úmida. Obrigado por compartilhar esta deliciosa receita!</Text>
                                 <Image source={require('../../Assets/threeP.png')} />
                             </View>
-                            <View style={styles.likeDeslikeBox}>
-                                <TouchableOpacity onPress={handleLike} style={[styles.likeDeslike, { display: 'flex' }]}>
-                                    <Image source={require('../../Assets/like.png')} />
-                                    <Text style={{ fontSize: 10, fontWeight: likeTrueBold }}>{like}</Text>
-                                </TouchableOpacity>
+                                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                                    <View style={styles.likeDeslikeBox}>
+                                        <TouchableOpacity onPress={handleLike} style={[styles.likeDeslike, { display: 'flex' }]}>
+                                            <Image source={require('../../Assets/like.png')} />
+                                            <Text style={{ fontSize: 10, fontWeight: likeTrueBold }}>{like}</Text>
+                                        </TouchableOpacity>
 
-                                <TouchableOpacity onPress={handleDislike} style={styles.likeDeslike}>
-                                    <Image source={require('../../Assets/dislike.png')} />
-                                    <Text style={{ fontSize: 10, fontWeight: DislikeTrueBold }}>{dislike}</Text>
-                                </TouchableOpacity>
-                            </View>
+                                        <TouchableOpacity onPress={handleDislike} style={styles.likeDeslike}>
+                                            <Image source={require('../../Assets/dislike.png')} />
+                                            <Text style={{ fontSize: 10, fontWeight: DislikeTrueBold }}>{dislike}</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                        <TouchableOpacity>
+                                            <Image style={{width: 25, height: 25}} source={require('../../Assets/complaint.png')} />
+                                        </TouchableOpacity>
+                                    </View>
                         </View>
                     </View>
                 </View>
