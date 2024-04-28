@@ -26,9 +26,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 8,
     },
-    scroll: {
-        
-    }
 })
 
 export default styles;

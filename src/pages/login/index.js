@@ -38,8 +38,6 @@ export function Login () {
                     <Text style={styles.novaContaText}>Criar conta</Text>
                 </TouchableOpacity>
             </View>
-
-            <View style = {styles.circulo}></View>
             <Versao/>
         </View>
     );
