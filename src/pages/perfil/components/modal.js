@@ -249,42 +249,111 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
     );
     
     const [openSecondModal, setOpenSecondModal] = useState(null);
-    const [loginInputValue, setLoginInputValue] = useState('Diego_Freire');
-    const [emailInputValue, setEmailInputValue] = useState('diegogarotolegal@gmail.com');
-    const senhaCorreta = '12345';
-    const [senhaDigitada, setSenhaDigitada] = useState('');
+    const [login, setLogin] = useState('Diego_Freire');
+    const [email, setEmail] = useState('diegogarotolegal@gmail.com');
+    const [senha, setSenha] = useState('12345');
+    const [continuar, setContinuar] = useState(false);
+    const [enviar, setEnviar] = useState(false);
+    const [final, setFinal] = useState(false);
+    const [inputDigitado, setDigitado] = useState('');
+    const [inputDigitado2, setDigitado2] = useState('');
+    const [inputDigitado3, setDigitado3] = useState('');
     const [corBotao, setCorBotao] = useState('#AFB297');
-    const verificarSenha = (text) => {
-        setSenhaDigitada(text);
-        if (text === senhaCorreta) {
+    const [aviso, setAviso] = useState(false);
+    const [aviso2, setAviso2] = useState(false);
+
+    const handleEnviar = () => {
+        setContinuar(true);
+    };
+
+    const mudarCor = (text) => {
+        setDigitado(text);
+        if (text !== '') {
             setCorBotao('#DF6127');
-            setAvisoSenhaIncorreta(false);
-            setConfirmar(true);
+            setAviso(false);
         } else {
+            setCorBotao('#AFB297');
+            setAviso(false);
+        }
+    }
+
+    const mudarCor2 = () => {
+        const senhaValida = inputDigitado !== '' && inputDigitado2.length >= 5 && inputDigitado3.length >= 5;
+        if (senhaValida) {
+            setCorBotao('#DF6127');
+            setAviso(false);
+            setAviso2(false);
+        } else {
+            setCorBotao('#AFB297');
+            setAviso(false);
+            setAviso2(false);
+        }
+    }
+
+    const verificarCodigo = () => {
+        const codigoEmail = '54321';
+        if (inputDigitado === codigoEmail) {
+            setDigitado('');
+            setEnviar(true);
+        } else {
+            setAviso(true);
+        }
+    };
+
+    const verificarSenha = () => {
+        if (inputDigitado === senha) {
+            navigation.navigate('login');
+        } else {
+            setAviso(true);
+        }
+    };
+
+    const mudarSenha = () => {
+        if (inputDigitado === senha && inputDigitado2 === inputDigitado3 && inputDigitado2 !== '') {
+            setSenha(inputDigitado2);
+            setOpenSecondModal(null);
+            setDigitado('');
+            setDigitado2('');
+            setDigitado3('');
+            setCorBotao('#AFB297');
+        } else if (inputDigitado !== senha) {
+            setAviso(true);
+            setCorBotao('#AFB297');
+        } else {
+            setAviso2(true);
             setCorBotao('#AFB297');
         }
     };
-    const [confirmar, setConfirmar] = useState(false);
-    const [avisoSenhaIncorreta, setAvisoSenhaIncorreta] = useState(false);
 
-    const handleConfirmar = () => {
-        if (confirmar) {
-            navigation.navigate('login');
+    const validarEmail = () => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailValido = regex.test(inputDigitado);
+        if (emailValido) {
+            setFinal(true);
+            /* para mudar o email
+            setEmail(inputDigitado);
+            setOpenSecondModal(null);
+            setDigitado('');
+            setCorBotao('#AFB297');
+            setContinuar(false);
+            setAviso(false);
+            setEnviar(false);
+            */
         } else {
-            setAvisoSenhaIncorreta(true);
+            setAviso(true);
         }
-    }
+    };
 
     const dados = () => (
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
             <Text style={{ fontWeight: '600', paddingBottom: 20, textAlign: 'center'}}>Deseja alterar algum dado?</Text>
             <TouchableOpacity onPress={() => setOpenSecondModal('Nome de usuário')} style={styles.centralOp}>
                 <Text style={{ fontWeight: 'bold' }}>Nome de usuário (login):</Text>
-                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{loginInputValue}</Text>
+                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{login}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setOpenSecondModal('E-mail')} style={styles.centralOp}>
                 <Text style={{ fontWeight: 'bold' }}>E-mail:</Text>
-                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{emailInputValue}</Text>
+                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{email}</Text>
             </TouchableOpacity>
                 <TouchableOpacity onPress={() => setOpenSecondModal('Senha')} style={styles.centralOp}>
                 <Text style={{ fontWeight: 'bold' }}>Senha</Text>
@@ -296,13 +365,24 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
     );
 
     const OpenSecondModal = () => {
-        const [confirmar, setConfirmar] = useState(false);
         return (
             <Modal visible={openSecondModal !== null} animationType="fade" transparent>
                 <View style={styles.modalContainer}>
                     <View style={styles.modalDados}>
                         <Text style={[styles.fecharText, { color: '#DF6127' }]}>{openSecondModal}</Text>
-                        <TouchableOpacity style={styles.fecharButton} onPress={() => setOpenSecondModal(null)}>
+                        <TouchableOpacity style={styles.fecharButton} 
+                            onPress={() => {
+                                setOpenSecondModal(null);
+                                setDigitado('');
+                                setDigitado2('');
+                                setDigitado3('');
+                                setCorBotao('#AFB297');
+                                setContinuar(false);
+                                setAviso(false);
+                                setEnviar(false);
+                                setFinal(false);
+                                setAviso2(false);
+                            }}>
                             <Text style={styles.fecharText}>X</Text>
                         </TouchableOpacity>
                         {(() => {
@@ -313,37 +393,117 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
                                         <TextInput
                                         style={styles.input}
                                         placeholder="Digite o nome de usuário"
-                                        value={loginInputValue}
                                         clearButtonMode="while-editing"
-                                        onChangeText={setLoginInputValue}/>
+                                        value={login}
+                                        onChangeText={(text) => {
+                                            const newText = text.replace(/[^a-zA-Z0-9_.\-]/g, '');
+                                            setLogin(newText);
+                                        }}/>
                                     </View> 
                                 );
                             case "E-mail":
                                 return (
                                     <View>
-                                        {(() => {
-                                        switch (confirmar) {
-                                            case false:
-                                                <View>
-                                                    <Text style={{ fontWeight: '600', paddingBottom: 20, textAlign: 'center'}}>Precisamos verificar com seu antigo e-mail, para poder alterá-lo</Text>
-                                                </View>
-                                            case true:
-                                                return (
-                                                    <TextInput
-                                                    style={styles.input}
-                                                    placeholder="Digite o nome de usuário"
-                                                    value={emailInputValue}
-                                                    clearButtonMode="while-editing"
-                                                    onChangeText={setEmailInputValue}/>
-                                               );
-                                        }})()}
-                                    </View>    
+                                    {continuar === false ? (
+                                        <View>
+                                            <Text style={{ fontWeight: '600', textAlign: 'center'}}>
+                                                Enviaremos um código de verificação para o seu antigo e-mail
+                                            </Text>
+                                            <TouchableOpacity onPress={handleEnviar}>
+                                                <Text style={[styles.botaoConfirma, { backgroundColor: '#DF6127' }]}>Enviar</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    ) : ( enviar === false ? (
+                                        <View>
+                                            <TextInput
+                                                style={styles.input}
+                                                placeholder="Digite o código de verificação"
+                                                clearButtonMode="while-editing"
+                                                value={inputDigitado}
+                                                onChangeText={(text) => {
+                                                    const newText = text.replace(/[^a-zA-Z0-9]/g, '');
+                                                    mudarCor(newText);
+                                                }}/>
+                                            <TouchableOpacity onPress={verificarCodigo} disabled={corBotao === '#AFB297'}>
+                                                <Text style={[styles.botaoConfirma, { backgroundColor: corBotao, marginBottom: 10 }]}>Confirmar</Text>
+                                            </TouchableOpacity>
+                                            {aviso && <Text style={{ color: 'red', textAlign: 'center'}}>Código Incorreta</Text>}
+                                        </View>
+                                    ) : ( final === false ? (
+                                        <View>
+                                            <TextInput
+                                                style={styles.input}
+                                                placeholder="Digite o novo e-mail"
+                                                clearButtonMode="while-editing"
+                                                value={inputDigitado}
+                                                onChangeText={(text) => {
+                                                    const newText = text.replace(/[^a-zA-Z0-9_.\-@]/g, '');
+                                                    setDigitado(newText);
+                                                    setAviso(false);
+                                                }}/>
+                                            <TouchableOpacity onPress={validarEmail}>
+                                                <Text style={[styles.botaoConfirma, { backgroundColor: corBotao, marginBottom: 10 }]}>Alterar</Text>
+                                            </TouchableOpacity>
+                                            {aviso && <Text style={{ color: 'red', textAlign: 'center'}}>Email Inválido</Text>}
+                                        </View>
+                                    ) : (
+                                        <View>
+                                            <Text>Um e-mail de confirmação foi enviado para o seu novo endereço de e-mail.</Text>
+                                            <TouchableOpacity onPress={() => {
+                                                    setOpenSecondModal(null);
+                                                    setDigitado('');
+                                                    setCorBotao('#AFB297');
+                                                    setContinuar(false);
+                                                    setAviso(false);
+                                                    setEnviar(false);
+                                                    setFinal(false);
+                                                }}>
+                                                <Text style={[styles.botaoConfirma, { backgroundColor: '#DF6127' }]}>OK</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    )))}
+                                </View>    
                                 );
                             case "Senha":
                                 return (
                                     <View>
-                                        <TextInput placeholder="Digite a senha Atual" secureTextEntry/>
-                                        <TextInput placeholder="Digite a nova senha" secureTextEntr/>
+                                        <Text style={{ fontWeight: '600', textAlign: 'center', paddingBottom: 10}}>
+                                            A Senha deve conter pelo menos 5 caracteres.
+                                        </Text>
+                                        <TextInput
+                                            style={{paddingBottom: 10}}
+                                            placeholder="Digite a senha Atual"
+                                            secureTextEntry
+                                            value={inputDigitado}
+                                            onChangeText={(text) => {
+                                                const newText = text.replace(/\s/g, '');
+                                                setDigitado(newText);
+                                                mudarCor2();
+                                            }}/>
+                                        <TextInput
+                                            style={{paddingBottom: 10}}
+                                            placeholder="Digite a senha Nova"
+                                            secureTextEntry
+                                            value={inputDigitado2}
+                                            onChangeText={(text) => {
+                                                const newText = text.replace(/\s/g, '');
+                                                setDigitado2(newText);
+                                                mudarCor2();
+                                            }}/>
+                                        <TextInput
+                                            placeholder="Digite novamente a senha Nova"
+                                            secureTextEntry
+                                            value={inputDigitado3}
+                                            onChangeText={(text) => {
+                                                const newText = text.replace(/\s/g, '');
+                                                setDigitado3(newText);
+                                                mudarCor2();
+                                            }}/>
+                                        <TouchableOpacity onPress={mudarSenha} disabled={corBotao === '#AFB297'}>
+                                            <Text style={[styles.botaoConfirma, { backgroundColor: corBotao }]}>Confirmar</Text>
+                                        </TouchableOpacity>
+                                        {aviso && <Text style={{ color: 'red', textAlign: 'center'}}>Senha Atual Incorreta</Text>}
+                                        {aviso2 && <Text style={{ color: 'red', textAlign: 'center'}}>Senhas Diferentes</Text>}
                                     </View>
                                 );
                             case "Excluir conta":
@@ -353,15 +513,15 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
                                         <TextInput
                                             placeholder="Digite a senha Atual"
                                             secureTextEntry
+                                            value={inputDigitado}
                                             onChangeText={(text) => {
-                                                setSenhaDigitada(text);
-                                                verificarSenha(text);
+                                                const newText = text.replace(/\s/g, '');
+                                                mudarCor(newText);
                                             }}/>
-                                        <TouchableOpacity
-                                            onPress={verificarSenha}>
-                                            <Text style={[styles.botaoConfirma, { backgroundColor: corBotao }]} onPress={handleConfirmar}>Confirmar</Text>
+                                        <TouchableOpacity onPress={verificarSenha} disabled={corBotao === '#AFB297'}>
+                                            <Text style={[styles.botaoConfirma, { backgroundColor: corBotao }]}>Confirmar</Text>
                                         </TouchableOpacity>
-                                        {avisoSenhaIncorreta && <Text style={{ color: 'red', textAlign: 'center'}}>Senha Incorreta</Text>}
+                                        {aviso && <Text style={{ color: 'red', textAlign: 'center'}}>Senha Incorreta</Text>}
                                     </View>
                                 );
                             default:
