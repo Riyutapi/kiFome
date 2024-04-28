@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking, Switch, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useLogin, SGLogin, useEmail, useSenha } from '../../../services/usuario';
 
-export default function ModalPerfil({ visible, opcao, closeModal }) {
+export default function ModalPerfil({ visible, opcao, closeModal, onClose }) {
     const navigation = useNavigation();
 
     const sobre = () => (
@@ -249,9 +250,10 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
     );
     
     const [openSecondModal, setOpenSecondModal] = useState(null);
-    const [login, setLogin] = useState('Diego_Freire');
-    const [email, setEmail] = useState('diegogarotolegal@gmail.com');
-    const [senha, setSenha] = useState('12345');
+    const loginOriginal = useLogin();
+    const [login, setLogin] = useState(loginOriginal);
+    const email = useEmail();
+    const senha = useSenha();
     const [continuar, setContinuar] = useState(false);
     const [enviar, setEnviar] = useState(false);
     const [final, setFinal] = useState(false);
@@ -261,9 +263,31 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
     const [corBotao, setCorBotao] = useState('#AFB297');
     const [aviso, setAviso] = useState(false);
     const [aviso2, setAviso2] = useState(false);
+    const [modificado, setModificado] = useState(false);
 
     const handleEnviar = () => {
         setContinuar(true);
+    };
+
+    const mudarCor0 = (text) => {
+        setLogin(text);
+        if (text === '') {
+            setCorBotao('#DF6127');
+        } else if (text.length < 3) {
+            setCorBotao('#AFB297');
+        } else {
+            setCorBotao('#DF6127');
+        }
+    };
+
+    const handleLogin = () => {
+        if (login === '') {
+            setLogin(loginOriginal);
+        } else {
+            SGLogin(login);
+            setModificado(true);
+        }
+        setOpenSecondModal(null);
     };
 
     const mudarCor = (text) => {
@@ -310,7 +334,7 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
 
     const mudarSenha = () => {
         if (inputDigitado === senha && inputDigitado2 === inputDigitado3 && inputDigitado2 !== '') {
-            setSenha(inputDigitado2);
+            SGSenha(inputDigitado2);
             setOpenSecondModal(null);
             setDigitado('');
             setDigitado2('');
@@ -331,7 +355,7 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
         if (emailValido) {
             setFinal(true);
             /* para mudar o email
-            setEmail(inputDigitado);
+            SGEmail(inputDigitado);
             setOpenSecondModal(null);
             setDigitado('');
             setCorBotao('#AFB297');
@@ -349,11 +373,11 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
             <Text style={{ fontWeight: '600', paddingBottom: 20, textAlign: 'center'}}>Deseja alterar algum dado?</Text>
             <TouchableOpacity onPress={() => setOpenSecondModal('Nome de usuário')} style={styles.centralOp}>
                 <Text style={{ fontWeight: 'bold' }}>Nome de usuário (login):</Text>
-                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{login}</Text>
+                <Text>{loginOriginal}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setOpenSecondModal('E-mail')} style={styles.centralOp}>
                 <Text style={{ fontWeight: 'bold' }}>E-mail:</Text>
-                <Text style={{ position: 'absolute', right: 7, top: 13 }}>{email}</Text>
+                <Text>{email}</Text>
             </TouchableOpacity>
                 <TouchableOpacity onPress={() => setOpenSecondModal('Senha')} style={styles.centralOp}>
                 <Text style={{ fontWeight: 'bold' }}>Senha</Text>
@@ -382,6 +406,7 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
                                 setEnviar(false);
                                 setFinal(false);
                                 setAviso2(false);
+                                setLogin(loginOriginal);
                             }}>
                             <Text style={styles.fecharText}>X</Text>
                         </TouchableOpacity>
@@ -390,15 +415,21 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
                             case "Nome de usuário":
                                 return (
                                     <View>
+                                        <Text style={{ fontWeight: '600', textAlign: 'center', paddingBottom: 10}}>
+                                            Precisa conter pelo menos 3 caracteres.
+                                        </Text>
                                         <TextInput
-                                        style={styles.input}
-                                        placeholder="Digite o nome de usuário"
-                                        clearButtonMode="while-editing"
-                                        value={login}
-                                        onChangeText={(text) => {
-                                            const newText = text.replace(/[^a-zA-Z0-9_.\-]/g, '');
-                                            setLogin(newText);
-                                        }}/>
+                                            style={styles.input}
+                                            placeholder="Digite o nome de usuário"
+                                            clearButtonMode="while-editing"
+                                            value={login}
+                                            onChangeText={(text) => {
+                                                const newText = text.replace(/[^a-zA-Z0-9_.\-]/g, '');
+                                                mudarCor0(newText);
+                                            }}/>
+                                        <TouchableOpacity onPress={handleLogin} disabled={corBotao === '#AFB297'}>
+                                            <Text style={[styles.botaoConfirma, { backgroundColor: corBotao, marginBottom: 10 }]}>Confirmar</Text>
+                                        </TouchableOpacity>
                                     </View> 
                                 );
                             case "E-mail":
@@ -533,13 +564,18 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
             </Modal>
         );
     }
+    
+    const handleCloseModal = () => {
+        onClose(modificado);
+        closeModal();
+    };
 
     return (
         <Modal visible={visible} animationType="slide" transparent>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
                     <Text style={[styles.fecharText, { color: '#DF6127' }]}>{opcao}</Text>
-                    <TouchableOpacity style={styles.fecharButton} onPress={closeModal}>
+                    <TouchableOpacity style={styles.fecharButton} onPress={handleCloseModal}>
                         <Text style={styles.fecharText}>X</Text>
                     </TouchableOpacity>
                     {(() => {
@@ -553,7 +589,7 @@ export default function ModalPerfil({ visible, opcao, closeModal }) {
                         case "Notificações":
                             return notificacoes();
                         case "Meus Dados":
-                        return dados();
+                            return dados();
                         default:
                         return <Text>{opcao}</Text>;
                     }

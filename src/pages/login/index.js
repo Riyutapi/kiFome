@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from "./styles";
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Versao from '../../components/versao'
 import But from '../../components/Button';
+import { SGLogin, SGSenha } from '../../services/usuario'
 
 
 export function Login () {
     const navigation = useNavigation();
+    const [login, setLogin] = useState();
+    const [senha, setSenha] = useState();
 
     return (
         <View style={styles.container}>
@@ -19,11 +22,23 @@ export function Login () {
 
             <View style={styles.form}>
                 <View style={styles.boxes}>
-                        <TextInput style={styles.input} placeholder="Login" require />
+                    <TextInput style={styles.input} placeholder="Login" require 
+                        value={login}
+                        onChangeText={(text) => {
+                            const newText = text.replace(/[^a-zA-Z0-9_.\-]/g, '');
+                            SGLogin(newText);
+                            setLogin(newText);
+                        }}/>
                 </View>
 
                 <View style={styles.boxes}>
-                        <TextInput style={styles.input} placeholder="Senha" secureTextEntry={true} require />
+                    <TextInput style={styles.input} placeholder="Senha" secureTextEntry={true} require
+                        value={senha}
+                        onChangeText={(text) => {
+                            const newText = text.replace(/\s/g, '');
+                            SGSenha(newText);
+                            setSenha(newText);
+                        }}/>
                 </View>
 
                 <TouchableOpacity style={styles.recuperarSenha}onPress={() => {

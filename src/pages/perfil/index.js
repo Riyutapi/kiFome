@@ -14,6 +14,7 @@ export function Perfil() {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible1, setModalVisible1] = useState(false);
     const [opcao, setOpcao] = useState(null);
+    const [modificado, setModificado] = useState(false);
 
     const openModal = (opcao) => {
         setOpcao(opcao);
@@ -25,6 +26,10 @@ export function Perfil() {
         setOpcao(null);
     };
 
+    const handleCloseModal = (modificado) => {
+        setModificado(modificado);
+    };
+
     const openModal2 = () => {
         setModalVisible1(true);
     };
@@ -32,6 +37,15 @@ export function Perfil() {
     const closeModal2 = () => {
         setModalVisible1(false);
     };
+
+    const handleBackPress = () => {
+        if (modificado) {
+            navigation.navigate('login');
+        } else {
+            navigation.goBack();
+        }
+    };
+
 
     return (
         <View style={styles.container}>
@@ -45,7 +59,7 @@ export function Perfil() {
             </View>
             
             <TouchableOpacity style={styles.superiorEsquerdo}>
-                <BackButton top={30} left={15} onPress={() => navigation.goBack()}/>
+                <BackButton top={30} left={15} onPress={handleBackPress}/>
             </TouchableOpacity>
 
             <View style={styles.retanguloContainer}>
@@ -66,7 +80,7 @@ export function Perfil() {
                 </TouchableOpacity>
             </View>
 
-            <ModalPerfil visible={modalVisible} opcao={opcao} closeModal={closeModal}/>
+            <ModalPerfil visible={modalVisible} opcao={opcao} closeModal={closeModal} onClose={handleCloseModal}/>
             <ModalUpeMais visible={modalVisible1} closeModal={closeModal2}/>
 
             <Versao/>
