@@ -269,7 +269,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 5,
         alignItems: 'center',
-    }
+    },
+    likeBottomBox: {
+
+    },
 });
 
 export default styles;
