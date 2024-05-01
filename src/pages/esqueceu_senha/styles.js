@@ -111,7 +111,33 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
         color: 'rgba(255, 255, 255, 0.849)',
-    }
+    },
+
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        width: '45%',
+        height: '20%',
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    fecharButton: {
+        position: 'absolute',
+        bottom: 0,
+        justifyContent: 'center',
+        zIndex: 100,
+    },
+    fecharText: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 20,
+        paddingBottom: 10,
+    },
 
 });
 

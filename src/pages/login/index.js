@@ -20,6 +20,7 @@ export function Login () {
     const verificar = () => {
         if (emailDigitado === '' && senhaDigitado === ''){
             navigation.navigate('menu');
+            return
         }
         
         if (emailDigitado !== email) {
@@ -64,7 +65,7 @@ export function Login () {
                         }}/>
                 </View>
 
-                <TouchableOpacity style={styles.recuperarSenha}onPress={() => {
+                <TouchableOpacity style={[styles.recuperarSenha, {marginBottom: 50}]} onPress={() => {
                     navigation.navigate('esqueceu')}}>
                     <Text style={styles.recuperarSenhaText}>Esqueceu a senha?</Text>
                 </TouchableOpacity>
