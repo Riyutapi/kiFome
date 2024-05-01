@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, Linking, Switch, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useLogin, SGLogin, useEmail, useSenha } from '../../../services/usuario';
+import { useLogin, SGLogin, useEmail, useSenha, SGSenha, excluirConta } from '../../../services/usuario';
 
 export default function ModalPerfil({ visible, opcao, closeModal, onClose }) {
     const navigation = useNavigation();
@@ -302,7 +302,7 @@ export default function ModalPerfil({ visible, opcao, closeModal, onClose }) {
     }
 
     const mudarCor2 = () => {
-        const senhaValida = inputDigitado !== '' && inputDigitado2.length >= 5 && inputDigitado3.length >= 5;
+        const senhaValida = inputDigitado !== '' && inputDigitado2.length >= 4 && inputDigitado3.length >= 4;
         if (senhaValida) {
             setCorBotao('#DF6127');
             setAviso(false);
@@ -326,6 +326,7 @@ export default function ModalPerfil({ visible, opcao, closeModal, onClose }) {
 
     const verificarSenha = () => {
         if (inputDigitado === senha) {
+            excluirConta();
             navigation.navigate('login');
         } else {
             setAviso(true);
@@ -372,7 +373,7 @@ export default function ModalPerfil({ visible, opcao, closeModal, onClose }) {
         <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{ paddingRight: 10 }}>
             <Text style={{ fontWeight: '600', paddingBottom: 20, textAlign: 'center'}}>Deseja alterar algum dado?</Text>
             <TouchableOpacity onPress={() => setOpenSecondModal('Nome de usuário')} style={styles.centralOp}>
-                <Text style={{ fontWeight: 'bold' }}>Nome de usuário (login):</Text>
+                <Text style={{ fontWeight: 'bold' }}>Nome de usuário:</Text>
                 <Text>{loginOriginal}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setOpenSecondModal('E-mail')} style={styles.centralOp}>

@@ -4,6 +4,10 @@ let login = 'Diego_Freire';
 let email = 'diegogarotolegal@gmail.com';
 let senha = '12345';
 
+const loginOriginal = 'Diego_Freire';
+const emailOriginal = 'diegogarotolegal@gmail.com';
+const senhaOriginal = '12345';
+
 export function SGLogin(text = '') {
     if (text !== '') {
         login = text;
@@ -35,4 +39,10 @@ export function SGSenha(text = '') {
 
 export function useSenha() {
     return useMemo(() => SGSenha());
+}
+
+export function excluirConta() {
+    login = loginOriginal;
+    email = emailOriginal;
+    senha = senhaOriginal;
 }
