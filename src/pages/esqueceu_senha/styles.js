@@ -8,11 +8,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    logo: {
-        padding: 140,
-        paddingTop: 15,
-    },
-
     circulo3: {
         position: 'absolute',
         width: 730,
@@ -41,6 +36,7 @@ const styles = StyleSheet.create({
     form: {
         width: '70%',
         alignItems: 'center',
+        marginBottom: 30,
     },
 
     boxes: {
@@ -68,11 +64,8 @@ const styles = StyleSheet.create({
         color: '#030303',
     },
 
-    titulo: {
-        alignItems: 'center',
-    },
-
     tituloText: {
+        paddingTop: 110,
         fontSize: 35,
         color: 'rgba(255, 255, 255, 0.849)',
     },
@@ -86,31 +79,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '700',
         color: 'rgba(255, 255, 255, 0.849)',
-        padding: 50,
-    },
-
-    botao: {
-        width: '60%',
-        height: 50,
-        backgroundColor: 'rgb(222, 96, 38)',
-        borderRadius: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginVertical: 32,
-        shadowColor: '#571c00e5',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-
-    botaoText: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: 'rgba(255, 255, 255, 0.849)',
+        textAlign:'center',
+        padding: 35,
     },
 
     modalContainer: {
