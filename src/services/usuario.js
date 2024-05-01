@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 
-let login = 'Diego_Freire';
-let email = 'diegogarotolegal@gmail.com';
+let login = 'beta_tester';
+let email = 'beta_tester@gmail.com';
 let senha = '12345';
 
-const loginOriginal = 'Diego_Freire';
-const emailOriginal = 'diegogarotolegal@gmail.com';
+const loginOriginal = 'beta_tester';
+const emailOriginal = 'beta_tester@gmail.com';
 const senhaOriginal = '12345';
 
 export function SGLogin(text = '') {

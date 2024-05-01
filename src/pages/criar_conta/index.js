@@ -1,41 +1,55 @@
 import React, { useState } from "react";
 import styles from "./styles";
-import { View, TextInput, TouchableOpacity, Image, Text } from 'react-native';
+import { View, TextInput, TouchableOpacity, Image, Text, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../../components/BackButton';
 import But from '../../components/Button';
 import { SGLogin, SGEmail, SGSenha } from '../../services/usuario'
-
+import TermoDeUso from "../../components/termo";
 
 export function Cadastro () {
     const navigation = useNavigation();
-    const [login, setLogin] = useState();
-    const [email, setEmail] = useState();
-    const [senha, setSenha] = useState();
-    const [senhaConfirmar, setSenhaConfirmar] = useState();
+    const [modalVisible, setModalVisible] = useState(false);
+    const [login, setLogin] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [senhaConfirmar, setSenhaConfirmar] = useState('');
     const [aviso, setAviso] = useState(false);
     const [aviso2, setAviso2] = useState(false);
     const [aviso3, setAviso3] = useState(false);
+    const [aviso4, setAviso4] = useState(false);
+    const [aviso5, setAviso5] = useState(false);
 
     const validar = () => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailValido = regex.test(email);
+       
         if (login === '' || email === '' || senha === '' || senhaConfirmar === '') {
             setAviso(true);
-            setAviso2(false);
-            setAviso3(false);
-        } else if (senha.length >= 5 && senhaConfirmar.length >= 5) {
-            setAviso(false);
-            setAviso2(false);
-            setAviso3(true);
+        } else if (emailValido === false) {
+            setAviso5(true);
+        } else if (login.length < 3) {
+            setAviso4(true)
         } else if (senha !== senhaConfirmar) {
-            setAviso(false);
             setAviso2(true);
-            setAviso3(false);
+        } else if (senha.length <= 4) {
+            setAviso3(true);
         } else {
-            SGSenha(senha)
+            setModalVisible(true);
             setAviso(false);
             setAviso2(false);
             setAviso3(false);
+            setAviso4(false);
+            setAviso5(false);
         }
+    }
+
+    const concordo = () => {
+        setModalVisible(false);
+        SGLogin(login);
+        SGEmail(email);
+        SGSenha(senha);
+        navigation.navigate('login');
     }
 
     return (
@@ -55,13 +69,16 @@ export function Cadastro () {
 
                 <View style={styles.boxes}>
                     <TextInput style={styles.input}
-                        placeholder="Login"
+                        placeholder="Nome de Usuário"
                         value={login}
                         onChangeText={(text) => {
                             const newText = text.replace(/[^a-zA-Z0-9_.\-]/g, '');
-                            SGLogin(newText);
                             setLogin(newText);
-                            validar();
+                            setAviso(false);
+                            setAviso2(false);
+                            setAviso3(false);
+                            setAviso4(false);
+                            setAviso5(false);
                         }}/>
                 </View>
 
@@ -69,10 +86,13 @@ export function Cadastro () {
                     <TextInput style={styles.input} placeholder="E-mail" 
                         value={email}
                         onChangeText={(text) => {
-                            const newText = text.replace(/[^a-zA-Z0-9]/g, '');
-                            SGEmail(newText);
+                            const newText = text.replace(/[^a-zA-Z0-9_.\-@]/g, '');
                             setEmail(newText);
-                            validar();
+                            setAviso(false);
+                            setAviso2(false);
+                            setAviso3(false);
+                            setAviso4(false);
+                            setAviso5(false);
                         }}/>
                 </View>
 
@@ -82,7 +102,11 @@ export function Cadastro () {
                         onChangeText={(text) => {
                             const newText = text.replace(/\s/g, '');
                             setSenha(newText);
-                            validar();
+                            setAviso(false);
+                            setAviso2(false);
+                            setAviso3(false);
+                            setAviso4(false);
+                            setAviso5(false);
                         }}/>
                 </View>
 
@@ -92,17 +116,40 @@ export function Cadastro () {
                         onChangeText={(text) => {
                             const newText = text.replace(/\s/g, '');
                             setSenhaConfirmar(newText);
-                            validar();
+                            setAviso(false);
+                            setAviso2(false);
+                            setAviso3(false);
+                            setAviso4(false);
+                            setAviso5(false);
                         }}/>
                 </View>
 
+                {aviso && <Text style={{ color: 'black', textAlign: 'center', fontWeight: 'bold'}}>Campo Faltando</Text>}
+                {aviso2 && <Text style={{ color: 'black', textAlign: 'center', fontWeight: 'bold'}}>Senhas Diferentes</Text>}
+                {aviso3 && <Text style={{ color: 'black', textAlign: 'center', fontWeight: 'bold'}}>A Senha deve conter pelo menos 5 caracteres.</Text>}
+                {aviso4 && <Text style={{ color: 'black', textAlign: 'center', fontWeight: 'bold'}}>O nome de usuário menos 3 caracteres.</Text>}
+                {aviso5 && <Text style={{ color: 'black', textAlign: 'center', fontWeight: 'bold'}}>E-mail inválido.</Text>}
+
                 <View style = {styles.But}>
-                    <But texto={'CRIAR'} onPress={() => navigation.navigate('login')} disabled={aviso || aviso2 || aviso3}/>
+                    <But texto={'CRIAR'} onPress={validar}/>
                 </View>
-                {aviso && <Text style={{ color: 'red', textAlign: 'center'}}>Campo Faltando</Text>}
-                {aviso2 && <Text style={{ color: 'red', textAlign: 'center'}}>Senhas Diferentes</Text>}
-                {aviso3 && <Text style={{ color: 'red', textAlign: 'center'}}>A Senha deve conter pelo menos 5 caracteres.</Text>}
+
             </View>
+
+            <Modal visible={modalVisible} animationType="fade" transparent>
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <TouchableOpacity style={styles.fecharButton} onPress={() => setModalVisible(false)}>
+                            <Text style={styles.buttonModalText}>X</Text>
+                        </TouchableOpacity>
+                        <View style={{margin: 10, marginBottom: 50, marginTop: 35}}>{TermoDeUso()}</View>
+                        <TouchableOpacity style={styles.concordoButton} onPress={concordo}>
+                            <Text style={styles.buttonModalText}>Concordo</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+
         </View>
     );
 };

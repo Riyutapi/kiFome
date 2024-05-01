@@ -75,7 +75,7 @@ export function Login () {
 
                 <But texto={'ENTRAR'} onPress={verificar}/>
 
-                <TouchableOpacity style={styles.novaConta} onPress={() => {
+                <TouchableOpacity onPress={() => {
                     navigation.navigate('cadastro')}}>
                     <Text style={styles.novaContaText}>Criar conta</Text>
                 </TouchableOpacity>

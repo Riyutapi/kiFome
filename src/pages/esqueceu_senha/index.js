@@ -57,8 +57,8 @@ export function Esqueceu() {
             <Modal visible={modalVisible} animationType="fade" transparent>
                 <View style={styles.modalContainer}>
                     <View style={styles.modalContent}>
-                    <Text style={{ textAlign: 'center', fontSize: 15, padding: 15}}>Um e-mail de recuperação de senha foi enviado para o endereço fornecido.</Text>
-                    <TouchableOpacity style={styles.fecharButton} onPress={() => setModalVisible(false)}>
+                        <Text style={{ textAlign: 'center', fontSize: 15, padding: 15}}>Um e-mail de recuperação de senha foi enviado para o endereço fornecido.</Text>
+                        <TouchableOpacity style={styles.fecharButton} onPress={() => setModalVisible(false)}>
                             <Text style={styles.fecharText}>OK</Text>
                         </TouchableOpacity>
                     </View>
