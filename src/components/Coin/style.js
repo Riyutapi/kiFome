@@ -44,12 +44,57 @@ const styles = StyleSheet.create({
     },
     modalOpen: {
         width: 300,
-        height: 400,
+        height: 650,
         backgroundColor: 'white',
         zIndex: 2,
         borderRadius: 10,
         opacity: 1,
         alignSelf: 'center',
+        marginBottom: 20,
+    },
+    modalOpenContent:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 13,
+        marginTop: 15,
+    },
+    modalOpenContentTitles: {
+        fontWeight: '700',
+        fontSize: 14,
+        color: '#3E4411',
+    },
+    modalOpenContentText: {
+        fontWeight: '400',
+        fontSize: 12,
+        color: '#3E4411',
+        width: 213,
+    },
+    modalOpenContentTopics: {
+        display: 'flex',
+        flexDirection: 'column',
+        
+    },
+    modalOpenContentTopicsT: {
+        fontWeight: '400',
+        fontSize: 12,
+        color: '#3E4411',
+    },
+    modalOpenContentImages: {
+        display: 'flex',
+        flexDirection: 'row-reverse',
+        gap: 10,
+        alignItems: 'center',
+    },
+    modalOpenContentButton: {
+        width: 270,
+        height: 48,
+        backgroundColor: '#DF6127',
+        borderRadius: 25,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });
 

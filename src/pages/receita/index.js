@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions, TextInput } from "react-native";
 import styles from "./style";
 import BackButton from "../../components/BackButton";
 import { useNavigation } from '@react-navigation/native';
+import { Button } from "react-native-web";
+import But from "../../components/Button";
 
 export function Receita() {
     const navigation = useNavigation();
@@ -14,6 +16,10 @@ export function Receita() {
     const [DislikeTrue, setDislikeTrue] = useState(false);
     const [DislikeTrueBold, setDislikeTrueBold] = useState('400');
     const [opacities, setOpacities] = useState(Array(5).fill(0.3)); // Initial opacity values
+    const [modalDenuncia, setModalDenuncia] = React.useState('none')
+    const { height: screenHeight } = Dimensions.get('window');
+    const { width: screenWidth } = Dimensions.get('window');
+    const [denuncia, setDenuncia] = React.useState('')
 
     const handleChapeu = (index) => {
         setOpacities(prevOpacities => {
@@ -68,8 +74,27 @@ export function Receita() {
         { img: require('../../Assets/AvaliacaoChapeu.png') },
     ]
 
+    const handleDenuncia = (text) => {
+        setDenuncia(text)
+    }
+
+    const closeModalDenuncia = () => {
+        setModalDenuncia("none")
+        setDenuncia('')
+    }
+
     return (
         <View style={styles.modal}>
+            <View style={[styles.modalDenunciaBack, {width: screenWidth, height: screenHeight + 40, display: modalDenuncia}]}>
+                <View style={styles.modalDenuncia}>
+                        <Text style={{fontWeight: '700', fontSize: 13}}>Digite o motivo da denuncia</Text>   
+                        <TextInput style={styles.input} value={denuncia} onChangeText={handleDenuncia} placeholder=''/>
+                        <View style={{display: 'flex', flexDirection: 'row', gap: 15}}>
+                            <TouchableOpacity style={styles.buttonDenuncia} onPress={closeModalDenuncia}><Text style={styles.textButtonDenuncia}>Enviar</Text></TouchableOpacity>
+                            <TouchableOpacity style={styles.buttonDenuncia} onPress={closeModalDenuncia}><Text style={styles.textButtonDenuncia}>Cancelar</Text></TouchableOpacity>
+                        </View>
+                </View>
+            </View>
             <ScrollView style={styles.scroll}>
                 {/* Cabeçalho */}
                 <View style={styles.Header}>
@@ -193,7 +218,7 @@ export function Receita() {
                             </View>
                             <View style={styles.comentMidText}>
                                 <Text style={{ fontSize: 10, fontWeight: '400', color: '#3E4411', width: 300, }}>Eu simplesmente adorei esta receita de omelete! O sabor ficou incrível, e a textura ficou perfeita - não muito seca, nem muito úmida. Obrigado por compartilhar esta deliciosa receita!</Text>
-                                <Image source={require('../../Assets/threeP.png')} />
+                               
                             </View>
                                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                                     <View style={styles.likeDeslikeBox}>
@@ -207,7 +232,8 @@ export function Receita() {
                                             <Text style={{ fontSize: 10, fontWeight: DislikeTrueBold }}>{dislike}</Text>
                                         </TouchableOpacity>
                                     </View>
-                                        <TouchableOpacity>
+   
+                                        <TouchableOpacity onPress={() => setModalDenuncia("flex")}>
                                             <Image style={{width: 25, height: 25}} source={require('../../Assets/complaint.png')} />
                                         </TouchableOpacity>
                                     </View>
