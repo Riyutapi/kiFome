@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, Image, TextInput } from "react-native";
 import styles from "./style";
 import Coin from "../../components/Coin";
 import PerfilComponent from "../../components/Perfil";

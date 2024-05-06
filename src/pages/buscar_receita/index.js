@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { Text, View, TextInput} from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
 import  PerfilComponent  from '../../components/Perfil';
 import Coin from '../../components/Coin';
 import styles from "./styles";
 import But from '../../components/Button';
 import Categorias from "../../components/Categorias";
-import BarradePesquisa from '../../components/Barra de Pesquisa';
+import BarradePesquisa from '../../components/BarraPesquisa';
 
 export function Buscar_Receita(){
 
@@ -24,7 +24,6 @@ export function Buscar_Receita(){
 
             <BarradePesquisa></BarradePesquisa>
 
-
             <View style={styles.categoria}>
                 <Text style={{fontSize: 12, fontWeight: '700', color: '#3E4411'}}>NÃO TEM NADA EM MENTE?</Text>
                 <Text style={{fontSize: 10, fontWeight: '700', color: '#3E4411'}}>TENTE UMA CATEGORIA:</Text>
@@ -35,8 +34,6 @@ export function Buscar_Receita(){
             <View style={styles.but}>
                 <But texto={'BUSCAR'}></But>
             </View>
-
-
             
         </View>
     )

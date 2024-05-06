@@ -269,6 +269,45 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 5,
         alignItems: 'center',
+    },
+    modalDenunciaBack:{
+        position: 'absolute', 
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'black', 
+        zIndex: 100, 
+        top: 0,
+        opacity: .9
+    },
+    modalDenuncia: {
+        width: 350,
+        height: 150,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 20,
+        paddingTop: 15,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#000',
+        borderRadius: 15,
+        width: 250,
+    },
+    buttonDenuncia:{
+        borderWidth: 1,
+        borderColor: '#fff',
+        borderRadius: 15,
+        paddingHorizontal: 10,
+        paddingVertical: 2,
+        backgroundColor: 'rgb(222, 96, 38)',
+    },
+    textButtonDenuncia:{
+        fontWeight: '700',
+        color: '#fff'
     }
 });
 

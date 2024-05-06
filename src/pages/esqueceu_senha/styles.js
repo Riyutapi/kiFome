@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native-web";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -6,11 +6,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#afb398',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-
-    logo: {
-        padding: 140,
-        paddingTop: 15,
     },
 
     circulo3: {
@@ -41,6 +36,7 @@ const styles = StyleSheet.create({
     form: {
         width: '70%',
         alignItems: 'center',
+        marginBottom: 30,
     },
 
     boxes: {
@@ -68,11 +64,8 @@ const styles = StyleSheet.create({
         color: '#030303',
     },
 
-    titulo: {
-        alignItems: 'center',
-    },
-
     tituloText: {
+        paddingTop: 110,
         fontSize: 35,
         color: 'rgba(255, 255, 255, 0.849)',
     },
@@ -86,32 +79,35 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '700',
         color: 'rgba(255, 255, 255, 0.849)',
-        padding: 50,
+        textAlign:'center',
+        padding: 35,
     },
 
-    botao: {
-        width: '60%',
-        height: 50,
-        backgroundColor: 'rgb(222, 96, 38)',
-        borderRadius: 40,
+    modalContainer: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 32,
-        shadowColor: '#571c00e5',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
-
-    botaoText: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: 'rgba(255, 255, 255, 0.849)',
-    }
+    modalContent: {
+        backgroundColor: 'white',
+        width: '45%',
+        height: '20%',
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    fecharButton: {
+        position: 'absolute',
+        bottom: 0,
+        justifyContent: 'center',
+        zIndex: 100,
+    },
+    fecharText: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 20,
+        paddingBottom: 10,
+    },
 
 });
 

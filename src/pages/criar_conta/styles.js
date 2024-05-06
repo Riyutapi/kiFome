@@ -71,7 +71,39 @@ const styles = StyleSheet.create({
     But: {
         paddingBottom: 30,
         paddingTop: 20,
-    }
+    },
+
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        width: '90%',
+        height: '90%',
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    concordoButton: {
+        position: 'absolute',
+        bottom: 10,
+        justifyContent: 'center',
+        zIndex: 100,
+    },
+    fecharButton: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        zIndex: 100,
+    },
+    buttonModalText: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 20,        
+    },
+
 });
 
 export default styles;

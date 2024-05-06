@@ -5,7 +5,6 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#afb398',
         justifyContent: 'center',
         alignItems: 'center',
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: '#ffffff',
         paddingTop:10,
-        paddingBottom: 70,
+        paddingBottom: 35,
     },
 
 });
