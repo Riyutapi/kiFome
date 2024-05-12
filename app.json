@@ -14,8 +14,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "platforms": ["web"],
-    "homepage": "https://Riyutapi.github.io/kifome",
     "ios": {
       "supportsTablet": true
     },
