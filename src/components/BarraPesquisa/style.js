@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     barra:{
         width: 331,
         backgroundColor: '#fff',
-        height: 30,
+        height: 25,
         fontSize: 13,
         fontWeight: '500',
         color: '#AFB297',

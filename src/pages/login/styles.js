@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
 
     logo: {
-        padding: windowHeight * 0.18, 
+        padding: windowHeight * 0.15, 
         paddingTop: windowHeight * 0.1, 
     },
 
@@ -20,24 +20,25 @@ const styles = StyleSheet.create({
         height: windowWidth * 0.35, 
     },
 
-    circulo4: {
-        position: 'absolute',
-        width: windowWidth * 1.7,
-        height: windowWidth * 1.7, 
-        borderRadius: windowWidth * 0.9, 
-        top: windowHeight * 0.36, 
-        left: -windowWidth * 0.55, 
-        backgroundColor: '#ffffff',
-    },
 
     circulo3: {
         position: 'absolute',
-        width: windowWidth * 1.7,
-        height: windowWidth * 1.7,
+        width: windowWidth * 1.8,
+        height: windowWidth * 1.8,
         borderRadius: windowWidth * 0.9,
-        top: windowHeight * 0.37, 
+        top: windowHeight * 0.35, 
         left: -windowWidth * 0.55, 
         backgroundColor: '#DF6127',
+    },
+
+    circulo4: {
+        position: 'absolute',
+        width: windowWidth * 1.8,
+        height: windowWidth * 1.8, 
+        borderRadius: windowWidth * 0.9, 
+        top: windowHeight * 0.34, 
+        left: -windowWidth * 0.55, 
+        backgroundColor: '#ffffff',
     },
 
     form: {
@@ -74,7 +75,6 @@ const styles = StyleSheet.create({
         fontSize: windowWidth * 0.035,
         fontWeight: '600',
         color: '#ffffff',
-        paddingBottom: windowHeight * 0.1, 
     },
 
     botao: {

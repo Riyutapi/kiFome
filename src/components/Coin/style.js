@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         height: 38,
         width: 38,
         alignSelf: "flex-start",
-        marginTop: 10,
+        marginTop: 20,
     },
     coinBox: {
         display: "flex",
