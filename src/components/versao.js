@@ -6,7 +6,6 @@ export default function Versao() {
                 <Text style={styles.versionText}>V.001</Text>
         </View>
     )
-    
 }
 
 const styles = StyleSheet.create({

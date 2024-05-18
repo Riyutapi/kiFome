@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 import  PerfilComponent  from '../../components/Perfil';
 import Coin from '../../components/Coin';
@@ -13,7 +13,7 @@ export function Buscar_Receita(){
         <View style={styles.container}>
             <View style={styles.header}>
                 <Coin/>
-                <PerfilComponent color={"#f2f2ec"} left={-80}/>
+                <PerfilComponent color={"#f2f2ec"} left={-85}/>
             </View>
 
             <View style={styles.circulo}></View>
@@ -23,7 +23,6 @@ export function Buscar_Receita(){
             </View>
 
             <BarradePesquisa></BarradePesquisa>
-
 
             <View style={styles.categoria}>
                 <Text style={{fontSize: 12, fontWeight: '700', color: '#3E4411'}}>NÃO TEM NADA EM MENTE?</Text>
@@ -35,8 +34,6 @@ export function Buscar_Receita(){
             <View style={styles.but}>
                 <But texto={'BUSCAR'}></But>
             </View>
-
-
             
         </View>
     )

@@ -1,41 +1,45 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#afb398',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     logo: {
-        padding: 140,
-        paddingTop: 15,
+        padding: windowHeight * 0.13, 
+        paddingTop: windowHeight * 0.1, 
     },
+
+    image: {
+        width: windowWidth * 0.35, 
+        height: windowWidth * 0.35, 
+    },
+
 
     circulo3: {
         position: 'absolute',
-        width: 730,
-        height: 730,
-        borderRadius: 365,
-        top: 280,
-        right: -80,
+        width: windowWidth * 1.8,
+        height: windowWidth * 1.8,
+        borderRadius: windowWidth * 0.9,
+        top: windowHeight * 0.35, 
+        left: -windowWidth * 0.55, 
         backgroundColor: '#DF6127',
     },
 
     circulo4: {
         position: 'absolute',
-        width: 730,
-        height: 730,
-        borderRadius: 365,
-        top: 275,
-        right: -83,
+        width: windowWidth * 1.8,
+        height: windowWidth * 1.8, 
+        borderRadius: windowWidth * 0.9, 
+        top: windowHeight * 0.34, 
+        left: -windowWidth * 0.55, 
         backgroundColor: '#ffffff',
-    },
-
-    image: {
-        width: 161,
-        height: 163,
     },
 
     form: {
@@ -46,25 +50,25 @@ const styles = StyleSheet.create({
     boxes: {
         flexDirection: 'row',
         alignItems: 'center',
-        maxWidth: 380,
+        maxWidth: windowWidth * 0.95, 
         width: '100%',
-        height: 55,
+        height: windowHeight * 0.07,
         backgroundColor: '#ffffff',
-        marginVertical: 6,
-        borderRadius: 55,
+        marginVertical: windowHeight * 0.02, 
+        borderRadius: windowHeight * 0.05, 
         borderWidth: 2,
         borderColor: 'rgba(2, 2, 2, 0.849)',
-        paddingHorizontal: 10,
+        paddingHorizontal: windowWidth * 0.03, 
     },
 
     input: {
         flex: 1,
-        height: 51,
+        height: windowHeight * 0.060, 
         backgroundColor: '#ffffff',
-        fontSize: 16,
-        borderRadius: 40,
+        fontSize: windowWidth * 0.04, 
+        borderRadius: windowHeight * 0.05, 
         paddingVertical: 0,
-        paddingHorizontal: 20,
+        paddingHorizontal: windowWidth * 0.04, 
         color: '#030303',
     },
 
@@ -73,45 +77,24 @@ const styles = StyleSheet.create({
     },
 
     tituloText: {
+        paddingTop: windowHeight * 0.04,
         fontSize: 35,
         color: 'rgba(255, 255, 255, 0.849)',
     },
 
-    mensagem: {
-      alignItems: 'Center',
-      color: 'rgba(255, 255, 255, 0.849)',
+    mensagem: { 
+        fontWeight: 'bold',
+        textAlign: 'center',
+        justifyContent: 'center',
     },
 
     mensagemText: {
-        fontSize: 16,
+        fontSize: windowHeight * 0.021,
         fontWeight: '700',
         color: 'rgba(255, 255, 255, 0.849)',
-        padding: 50,
+        marginHorizontal: windowWidth * 0.1, 
+        paddingVertical: windowHeight * 0.06,
     },
-
-    botao: {
-        width: '60%',
-        height: 50,
-        backgroundColor: 'rgb(222, 96, 38)',
-        borderRadius: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginVertical: 32,
-        shadowColor: '#571c00e5',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-
-    botaoText: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: 'rgba(255, 255, 255, 0.849)',
-    }
 
 });
 

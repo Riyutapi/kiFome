@@ -1,7 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -11,60 +14,58 @@ const styles = StyleSheet.create({
     },
 
     header: {
-        top: 5,
-        marginHorizontal: 20,
+        marginHorizontal: windowWidth * 0.05,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: 80,
+        gap: windowWidth * 0.25, 
+        paddingTop: windowHeight * 0.01
     },
 
     input: {
-        width: 331,
+        width: windowWidth * 0.8, 
         backgroundColor: '#fff',
-        height: 30,
-        fontSize: 13,
+        height: windowHeight * 0.04, 
+        fontSize: windowHeight * 0.02, 
         fontWeight: '500',
         color: '#AFB297',
         borderWidth: 2,
-        borderRadius: 10,
-        paddingLeft: 15,
+        borderRadius: windowWidth * 0.03, 
+        paddingLeft: windowWidth * 0.05, 
     },
 
-    buscar:{
+    buscar: {
         alignSelf: 'center',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 10,
-        marginTop: 15,
-        paddingTop: 90,
+        gap: windowHeight * 0.01, 
+        marginTop: windowHeight * 0.02, 
+        paddingTop: windowHeight * 0.12, 
     },
 
     categoria: {
-       alignSelf: 'center', 
-       display: 'flex', 
-       flexDirection: 'column', 
-       alignItems: 'center',
-       gap: 10, 
-       paddingTop: 70,
+        alignSelf: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: windowHeight * 0.01, 
+        paddingTop: windowHeight * 0.09, 
     },
 
     circulo: {
         position: 'absolute',
-        width: 490,
-        height: 370,
-        borderRadius: 200,
-        top: 200,
-        right: -40,
+        width: windowWidth * 1.3, 
+        height: windowHeight * 0.50, 
+        borderRadius: windowWidth * 0.7, 
+        top: windowHeight * 0.25, 
         backgroundColor: '#f2f2ed',
     },
 
-    but:{
-        paddingTop: 100,
+    but: {
+        paddingVertical: windowHeight * 0.11, 
     },
-    
 });
 
 export default styles;
