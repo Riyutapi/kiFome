@@ -13,7 +13,7 @@ export function Buscar_Receita(){
         <View style={styles.container}>
             <View style={styles.header}>
                 <Coin/>
-                <PerfilComponent color={"#f2f2ec"} left={-80}/>
+                <PerfilComponent color={"#f2f2ec"} left={-85}/>
             </View>
 
             <View style={styles.circulo}></View>

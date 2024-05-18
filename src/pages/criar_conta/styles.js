@@ -1,41 +1,44 @@
-import { StyleSheet} from "react-native";
+import { StyleSheet, Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#afb398',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     logo: {
-        padding: 120,
-        paddingTop: 30,
+        padding: windowHeight * 0.13, 
+        paddingTop: windowHeight * 0.1, 
     },
+
+    image: {
+        width: windowWidth * 0.35, 
+        height: windowWidth * 0.35, 
+    },
+
 
     circulo3: {
         position: 'absolute',
-        width: 730,
-        height: 730,
-        borderRadius: 365,
-        top: 280,
-        right: -80,
+        width: windowWidth * 1.8,
+        height: windowWidth * 1.8,
+        borderRadius: windowWidth * 0.9,
+        top: windowHeight * 0.35, 
+        left: -windowWidth * 0.55, 
         backgroundColor: '#DF6127',
     },
 
     circulo4: {
         position: 'absolute',
-        width: 730,
-        height: 730,
-        borderRadius: 365,
-        top: 275,
-        right: -83,
+        width: windowWidth * 1.8,
+        height: windowWidth * 1.8, 
+        borderRadius: windowWidth * 0.9, 
+        top: windowHeight * 0.34, 
+        left: -windowWidth * 0.55, 
         backgroundColor: '#ffffff',
-    },
-
-    image: {
-        width: 161,
-        height: 163,
     },
 
     form: {
@@ -46,62 +49,56 @@ const styles = StyleSheet.create({
     boxes: {
         flexDirection: 'row',
         alignItems: 'center',
-        maxWidth: 380,
+        maxWidth: windowWidth * 0.95, 
         width: '100%',
-        height: 55,
+        height: windowHeight * 0.07,
         backgroundColor: '#ffffff',
-        marginVertical: 10,
-        borderRadius: 55,
+        marginVertical: windowHeight * 0.02, 
+        borderRadius: windowHeight * 0.05, 
         borderWidth: 2,
         borderColor: 'rgba(2, 2, 2, 0.849)',
-        paddingHorizontal: 10,
+        paddingHorizontal: windowWidth * 0.03, 
     },
 
     input: {
         flex: 1,
-        height: 51,
+        height: windowHeight * 0.060, 
         backgroundColor: '#ffffff',
-        fontSize: 16,
-        borderRadius: 40,
+        fontSize: windowWidth * 0.04, 
+        borderRadius: windowHeight * 0.05, 
         paddingVertical: 0,
-        paddingHorizontal: 20,
+        paddingHorizontal: windowWidth * 0.04, 
         color: '#030303',
     },
 
-    But: {
-        paddingBottom: 30,
-        paddingTop: 20,
+    recuperarSenhaText: {
+        fontSize: windowWidth * 0.035,
+        fontWeight: '600',
+        color: '#ffffff',
     },
 
-    modalContainer: {
-        flex: 1,
+    botao: {
+        width: '60%',
+        height: windowHeight * 0.07, 
+        backgroundColor: 'rgb(222, 96, 38)',
+        borderRadius: windowHeight * 0.05,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        shadowColor: '#571c00e5',
+        shadowOffset: {
+            width: 0,
+            height: windowHeight * 0.01, 
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: windowWidth * 0.
     },
-    modalContent: {
-        backgroundColor: 'white',
-        width: '90%',
-        height: '90%',
-        borderRadius: 10,
-        alignItems: 'center',
-    },
-    concordoButton: {
-        position: 'absolute',
-        bottom: 10,
-        justifyContent: 'center',
-        zIndex: 100,
-    },
-    fecharButton: {
-        position: 'absolute',
-        top: 10,
-        right: 10,
-        zIndex: 100,
-    },
-    buttonModalText: {
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 20,        
+
+    novaContaText: {
+        fontSize: 14.5,
+        fontWeight: '600',
+        color: '#ffffff',
+        paddingTop:10,
+        paddingBottom: 35,
     },
 
 });

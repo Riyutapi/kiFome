@@ -25,12 +25,14 @@ export function Esqueceu() {
 
     return (
         <View style={styles.container}>
-            <BackButton top={-20} left={-170} onPress={() => navigation.goBack()}/>
+            <BackButton top={50} left={-170} onPress={() => navigation.goBack()}/>
 
             <View style = {styles.circulo4}/>
             <View style = {styles.circulo3}/>
 
-            <Image style = {styles.image} source={require("../../../assets/icon.png")} />
+            <View style={styles.logo}>
+                <Image style={styles.image} source={require("../../../assets/icon.png")} />
+            </View>
 
             <Text style = {styles.tituloText}>Recuperar Senha</Text>
 
